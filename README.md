@@ -9,6 +9,12 @@ as your application grows, you may need to refactor.
 
 See the specification for Picasso on the course web site.
 
+# Team Members
+Nisha Walvekar
+Sanjog Basnet
+Sarina Cusumano
+Sylvia Agatako
+Teddy Ross
 ## Running Picasso
 
 To run Picasso, run `picasso.Main`
@@ -24,3 +30,4 @@ To run Picasso, run `picasso.Main`
 ## Code Base History
 
 This code base originated as a project in a course at Duke University.  The professors realized that the code could be designed better and refactored.  This code base has some code leftover from the original version.
+
