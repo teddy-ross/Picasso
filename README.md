@@ -11,9 +11,13 @@ See the specification for Picasso on the course web site.
 
 # Team Members
 Nisha Walvekar
+
 Sanjog Basnet
+
 Sarina Cusumano
+
 Sylvia Agatako
+
 Teddy Ross
 ## Running Picasso
 
