@@ -90,5 +90,13 @@ public class ExpressionTreeGeneratorTests {
 		e = parser.makeExpression("floor( x + y )");
 		assertEquals(new Floor(new Addition(new X(), new Y())), e);
 	}
+	
+	@Test
+	public void sineFunctionTests() {
+		ExpressionTreeNode e = parse.makeExpression("sine(x)");
+		assertEquals(new Sine(new X()), e);
+		
+		e = parser.makeExpression("sine (x + y)");
+		assertEquals(new Sine(new Addition(new X(), new Y())), e);
 
 }
