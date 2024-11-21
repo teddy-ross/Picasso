@@ -1,7 +1,5 @@
-/**
- * 
- */
 package picasso.parser.language.expressions;
+
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
@@ -12,7 +10,10 @@ import picasso.parser.language.ExpressionTreeNode;
 public class Division extends BinaryOperator {
 
 	/**
+	 * Creates a division expression tree that takes as parameter the given expression
 	 * 
+	 * @param left expression to the left of /
+	 * @param right expression to the right of /
 	 */
 	public Division(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left,right);	
@@ -39,21 +40,21 @@ public class Division extends BinaryOperator {
 			red = 0;
 		}
 		else {
-			red = l.getRed()/r.getRed();
+			red = l.getRed() / r.getRed();
 		}
 		if (r.getBlue() == 0) {
 			blue = 0;
 		}
 		else {
-			blue = l.getBlue()/r.getBlue();
+			blue = l.getBlue() / r.getBlue();
 		}
 		if (r.getGreen() == 0) {
 			green = 0;
 		}
 		else {
-			green = l.getGreen()/r.getGreen();
+			green = l.getGreen() / r.getGreen();
 		}
 		
-		return new RGBColor(red, green, blue);
+		return new RGBColor(red,green,blue);
 	}
 }
