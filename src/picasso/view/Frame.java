@@ -32,29 +32,35 @@ public class Frame extends JFrame {
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator()));
-		commands.add("Save", new Writer());
-		
-		// add text field
+		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
 		t = new JTextField(10);
 		commands.add(t);
+		commands.add("Save", new Writer());
+		
 		
 		// runs once enter is pressed (need to fix function of actionPerformed()
 		t.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Evaluator();
+				System.out.println(t.getText());
+				//new ThreadedCommand<Pixmap>(canvas, new Evaluator(F));
 			}
 		});
-		
-		// runs once evaluate is pressed (need to fix function still)
-		
-		
-		
 
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
 		pack();
+		
+		
+		}
+	/**
+	 * 
+	 * @param j JTextField
+	 * @return
+	 */
+	public String getText() {
+		return t.getText();
 	}
 	
+		
 }
