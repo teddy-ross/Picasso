@@ -9,7 +9,7 @@ import picasso.parser.tokens.chars.CharToken;
  */
 public class DivideToken extends CharToken implements OperationInterface {
 	public DivideToken() {
-		super(CharConstants.SLASH);
+		super(CharConstants.DIVIDE);
 	}
 
 }
