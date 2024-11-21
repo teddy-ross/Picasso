@@ -20,7 +20,7 @@ import picasso.parser.tokens.functions.SineToken;
 
 /**
  * Tests that the cosine tokenization process works
- * @author Edward Ross
+ * @author Sarina Cusumano 
  */
 class TokenizerTest {
 	

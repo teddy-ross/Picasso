@@ -17,7 +17,7 @@ import picasso.parser.language.expressions.X;
 
 /**
  * 
- * @author Edward Ross
+ * @author Sarina Cusumano
  */
 class EvaluatorTests {
 
@@ -33,14 +33,14 @@ class EvaluatorTests {
 		Sine myTree = new Sine(new X());
 
 		// some straightforward tests
-		assertEquals(new RGBColor(Math.sin(.9),Math.sin(.9), Math.sin(.9)), myTree.evaluate(.9, -1));
+		assertEquals(new RGBColor(Math.sin(.2),Math.sin(.2), Math.sin(.2)), myTree.evaluate(.2, -1));
 		assertEquals(new RGBColor(Math.sin(0.5), Math.sin(0.5), Math.sin(0.5)), myTree.evaluate(.5, -1));
-		assertEquals(new RGBColor(Math.sin(-.7), Math.sin(-.7), Math.sin(-.7)), myTree.evaluate(-.7, -1));
+		assertEquals(new RGBColor(Math.sin(-.8), Math.sin(-.8), Math.sin(-.8)), myTree.evaluate(-.8, -1));
 
-		// test the ints; remember that y's value doesn't matter
+		// test; remember that y's value doesn't matter
 		for (int i = -1; i <= 1; i++) {
 			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.sin(i)), myTree.evaluate(i, -i));
-			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.s(i)), myTree.evaluate(i, i));
+			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.sin(i)), myTree.evaluate(i, i));
 		}
 
 		double[] tests = { -.7, -.00001, .000001, .5 };

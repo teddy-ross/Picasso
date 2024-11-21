@@ -18,7 +18,7 @@ import picasso.parser.language.expressions.Y;
 
 /**
  * 
- * @author Edward Ross
+ * @author Sarina Cusumano
  */
 class ExpressionTreeGeneratorTests {
 	

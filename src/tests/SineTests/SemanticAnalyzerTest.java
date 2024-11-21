@@ -13,16 +13,18 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
+import picasso.parser.language.expressions.Addition;
 import picasso.parser.language.expressions.Sine;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.functions.SineToken;
+import picasso.parser.tokens.operations.PlusToken;
 
 /**
  * 
- * @author Edward Ross
+ * @author Sarina Cusumano
  */
 	
 class SemanticAnalyzerTest {
@@ -57,5 +59,6 @@ class SemanticAnalyzerTest {
 		assertEquals(new Sine(new Y()), actual);
 		
 	}
+
 
 }
