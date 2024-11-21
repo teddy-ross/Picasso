@@ -2,14 +2,12 @@ package picasso.view.commands;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Frame;
-
-import javax.swing.*;
 
 import picasso.model.Pixmap;
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
+import picasso.view.Frame;
 //import picasso.view.Frame;
 
 /**
@@ -22,13 +20,14 @@ public class Evaluator implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
 	
-	static Frame container;
+	private Frame container;
 	
 	/**
 	 * 
 	 * @param container
 	 */
 	public Evaluator(Frame container) {
+		this.container = container;
 	}
 
 	/**

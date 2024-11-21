@@ -42,7 +42,7 @@ public class Frame extends JFrame {
 		t.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(t.getText());
-				//new ThreadedCommand<Pixmap>(canvas, new Evaluator()); 
+				//new ThreadedCommand<Pixmap>(canvas, new Evaluator(F));
 			}
 		});
 

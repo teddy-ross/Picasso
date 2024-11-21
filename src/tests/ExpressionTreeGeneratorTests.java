@@ -93,7 +93,7 @@ public class ExpressionTreeGeneratorTests {
 	
 	@Test
 	public void sineFunctionTests() {
-		ExpressionTreeNode e = parse.makeExpression("sine(x)");
+		ExpressionTreeNode e = parser.makeExpression("sine(x)");
 		assertEquals(new Sine(new X()), e);
 		
 		e = parser.makeExpression("sine (x + y)");
