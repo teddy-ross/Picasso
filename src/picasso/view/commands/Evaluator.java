@@ -65,15 +65,10 @@ public class Evaluator implements Command<Pixmap> {
 		// generate expression trees from strings, or you can create expression
 		// objects directly (as in the commented statement below).
 		
-<<<<<<< HEAD
-		String test = "cos(x+y)";
-
-	
-=======
 		String test = container.getText();
 		System.out.println(container.getText());
 
->>>>>>> refs/heads/Sarina
+
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		return expTreeGen.makeExpression(test);
 
