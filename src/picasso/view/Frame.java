@@ -17,7 +17,7 @@ import picasso.view.commands.*;
  */
 @SuppressWarnings("serial")
 public class Frame extends JFrame { 
-	
+			
 	static JTextField t; 
 	
 	static Action a; 
@@ -41,8 +41,12 @@ public class Frame extends JFrame {
 		// runs once enter is pressed (need to fix function of actionPerformed()
 		t.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(t.getText());
-				//new ThreadedCommand<Pixmap>(canvas, new Evaluator(F));
+				
+				Pixmap pixmap = canvas.getPixmap();
+				
+				ThreadedCommand<Pixmap> evaluatorCommand = new ThreadedCommand<>(canvas, new Evaluator(Frame.this));
+				
+				evaluatorCommand.execute(pixmap);
 			}
 		});
 
