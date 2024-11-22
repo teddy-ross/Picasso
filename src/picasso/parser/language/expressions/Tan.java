@@ -26,14 +26,15 @@ public class Tan extends UnaryFunction{
 	@Override
 	
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
-		double red = Math.tan(result.getRed());
-		double green = Math.tan(result.getGreen());
-		double blue = Math.tan(result.getBlue());
+		RGBColor paramVal = param.evaluate(x, y);
+		double red = Math.tan(paramVal.getRed());
+		double green = Math.tan(paramVal.getGreen());
+		double blue = Math.tan(paramVal.getBlue());
 
 		return new RGBColor(red, green, blue);
 		}
 	
 	}
+
 
 
