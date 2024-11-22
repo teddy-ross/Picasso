@@ -96,7 +96,8 @@ public class TokenizerTest {
 	public void testTokenizeCombinedFunctionExpression() {
 		String expression = "perlinColor(floor(x), y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
-		// TODO: Check the tokens...
+		
+		//TODO: Check the tokens, can't yet though because we don't have a perlinColor token created
 
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
