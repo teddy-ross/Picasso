@@ -44,9 +44,9 @@ public class Frame extends JFrame {
 				
 				Pixmap pixmap = canvas.getPixmap();
 				
-				ThreadedCommand<Pixmap> evaluatorCommand = new ThreadedCommand<>(canvas, new Evaluator(Frame.this));
+				new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);;
 				
-				evaluatorCommand.execute(pixmap);
+		
 			}
 		});
 
