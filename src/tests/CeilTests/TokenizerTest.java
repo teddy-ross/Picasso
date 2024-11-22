@@ -35,7 +35,7 @@ class TokenizerTest {
 
 	@Test
 	public void testTokenizeCeilingFunctionExpression() {
-		String expression = "Ceil(x)";
+		String expression = "ceil(x)";
 		tokens = tokenizer.parseTokens(expression);
 		assertEquals(new CeilToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
