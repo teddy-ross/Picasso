@@ -12,7 +12,7 @@ import picasso.parser.tokens.Token;
  * @author Edward Ross
  */
 
-public class CosAnalyzer implements SemanticAnalyzerInterface{
+public class CosineAnalyzer implements SemanticAnalyzerInterface{
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {

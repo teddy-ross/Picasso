@@ -44,4 +44,6 @@ class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
+
 }
+
