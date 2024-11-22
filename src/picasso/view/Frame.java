@@ -33,7 +33,7 @@ public class Frame extends JFrame {
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
-		t = new JTextField(10);
+		t = new JTextField(20);
 		commands.add(t);
 		commands.add("Save", new Writer());
 		
