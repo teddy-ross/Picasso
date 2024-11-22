@@ -20,7 +20,9 @@ public class Frame extends JFrame {
 	
 	static JTextField t; 
 	
-	static Action a; 
+	static Canvas canvas;
+	
+	static ThreadedCommand<Pixmap> tc;
 	
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,23 +30,23 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
+		
+		tc = new ThreadedCommand<Pixmap>(canvas, new Evaluator(this));
 
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
+		commands.add("Evaluate", tc);
 		t = new JTextField(10);
 		commands.add(t);
 		commands.add("Save", new Writer());
-		
-		
+
+
 		// runs once enter is pressed (need to fix function of actionPerformed()
-		t.addActionListener(new ActionListener() {
+		t.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(t.getText());
-				//new ThreadedCommand<Pixmap>(canvas, new Evaluator(F));
-			}
-		});
+				//new Evaluator();
+			}});
 
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
@@ -53,6 +55,7 @@ public class Frame extends JFrame {
 		
 		
 		}
+	
 	/**
 	 * 
 	 * @param j JTextField
