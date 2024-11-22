@@ -7,10 +7,10 @@ package picasso.parser.tokens.functions;
  * Represents the Cosine Token
  * @author Edward Ross
  */
-public class CosToken extends FunctionToken {
+public class CosineToken extends FunctionToken {
 
 	
-	public CosToken() {
+	public CosineToken() {
 		super("Cosine Function Token");
 	}
 
