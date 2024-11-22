@@ -17,12 +17,10 @@ import picasso.view.commands.*;
  */
 @SuppressWarnings("serial")
 public class Frame extends JFrame { 
-	
+			
 	static JTextField t; 
 	
-	static Canvas canvas;
-	
-	static ThreadedCommand<Pixmap> tc;
+	static Action a; 
 	
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,23 +28,27 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
-		
-		tc = new ThreadedCommand<Pixmap>(canvas, new Evaluator(this));
 
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Evaluate", tc);
-		t = new JTextField(10);
+		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
+		t = new JTextField(20);
 		commands.add(t);
 		commands.add("Save", new Writer());
-
-
+		
+		
 		// runs once enter is pressed (need to fix function of actionPerformed()
-		t.addActionListener(new ActionListener(){
+		t.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//new Evaluator();
-			}});
+				
+				Pixmap pixmap = canvas.getPixmap();
+				
+				new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);;
+				
+		
+			}
+		});
 
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
@@ -55,7 +57,6 @@ public class Frame extends JFrame {
 		
 		
 		}
-	
 	/**
 	 * 
 	 * @param j JTextField
@@ -67,3 +68,4 @@ public class Frame extends JFrame {
 	
 		
 }
+

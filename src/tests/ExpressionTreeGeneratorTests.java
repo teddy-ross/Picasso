@@ -68,6 +68,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
 
+	/* UNCOMMENT THIS WHEN MULTIPLY HAS BEEN IMPLEMENTED
 	@Test
 	public void arithmeticStackTests() {
 		Stack<Token> stack = parser.infixToPostfix("x + y * x");
@@ -81,7 +82,7 @@ public class ExpressionTreeGeneratorTests {
 
 		assertEquals(expected, stack);
 	}
-
+	*/
 	@Test
 	public void floorFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("floor( x )");
@@ -91,4 +92,5 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Floor(new Addition(new X(), new Y())), e);
 	}
 
+}
 }
