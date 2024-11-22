@@ -16,6 +16,7 @@ import picasso.parser.tokens.functions.TanToken;
 
 /**
  * Tests that the tangent tokenization process works
+ * @author Sylvia Agatako
  *
  */
 class TokenizerTest {
@@ -42,9 +43,9 @@ class TokenizerTest {
         tokens = tokenizer.parseTokens(expression);
 
         // Verify tokens are correctly identified
-        assertEquals(new TanToken(), tokens.get(0)); // First token is the tan function
-        assertEquals(new LeftParenToken(), tokens.get(1)); // Opening parenthesis
-        assertEquals(new IdentifierToken("x"), tokens.get(2)); // Identifier "x"
-        assertEquals(new RightParenToken(), tokens.get(3)); // Closing parenthesis
+        assertEquals(new TanToken(), tokens.get(0)); 
+        assertEquals(new LeftParenToken(), tokens.get(1)); 
+        assertEquals(new IdentifierToken("x"), tokens.get(2)); 
+        assertEquals(new RightParenToken(), tokens.get(3)); 
     }
 }

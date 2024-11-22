@@ -13,6 +13,7 @@ import picasso.parser.language.expressions.Y;
 
 /**
  * Unit tests for parsing and constructing tangent expressions with the ExpressionTreeGenerator.
+ * @author Sylvia Agatako
  * 
  */
 class ExpressionTreeGeneratorTests {
