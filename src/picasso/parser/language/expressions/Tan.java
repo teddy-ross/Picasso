@@ -8,6 +8,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Sylvia Agatako
  *
  */
+
 public class Tan extends UnaryFunction{
 	
 	public Tan(ExpressionTreeNode param) {
@@ -22,7 +23,6 @@ public class Tan extends UnaryFunction{
 	 * @return the color from evaluating the floor of the expression's parameter
 	 */
 	
-
 	@Override
 	
 	public RGBColor evaluate(double x, double y) {
