@@ -15,7 +15,7 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.chars.LeftParenToken;
 import picasso.parser.tokens.chars.RightParenToken;
-import picasso.parser.tokens.functions.CosToken;
+import picasso.parser.tokens.functions.CosineToken;
 
 /**
  * Tests that the cosine tokenization process works
@@ -35,9 +35,9 @@ class TokenizerTest {
 
 	@Test
 	public void testTokenizeCosineFunctionExpression() {
-		String expression = "cos(x)";
+		String expression = "cosine(x)";
 		tokens = tokenizer.parseTokens(expression);
-		assertEquals(new CosToken(), tokens.get(0));
+		assertEquals(new CosineToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
