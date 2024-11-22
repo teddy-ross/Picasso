@@ -46,12 +46,16 @@ class EvaluatorTests {
 		double[] tests = { -.7, -.00001, .000001, .5 };
 
 		for (double testVal : tests) {
-			double sineOfTestVal = Math.cos(testVal);
+
+			double sineOfTestVal = Math.sin(testVal);
+
 			assertEquals(new RGBColor(sineOfTestVal, sineOfTestVal, sineOfTestVal), myTree.evaluate(testVal, -1));
 			assertEquals(new RGBColor(sineOfTestVal, sineOfTestVal, sineOfTestVal),
 					myTree.evaluate(testVal, testVal));
 		}
+
+		
 	}
+	
 
 }
-

@@ -36,10 +36,12 @@ class ExpressionTreeGeneratorTests {
 
 	@Test
 	public void sineFunctionTests() {
-		ExpressionTreeNode e = parser.makeExpression("cos(x)");
+
+		ExpressionTreeNode e = parser.makeExpression("sine(x)");
 		assertEquals(new Sine(new X()), e);
 
-		e = parser.makeExpression("cos( x + y )");
+		e = parser.makeExpression("sine( x + y )");
 		assertEquals(new Sine(new Addition(new X(), new Y())), e);
 	}
 }
+
