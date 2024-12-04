@@ -40,7 +40,7 @@ public class ExpressionTreeGenerator {
 			return null;
 		}
 
-		// System.out.println("Process postfix expression");
+		System.out.println("Process postfix expression" + postfix);
 		SemanticAnalyzer semAnalyzer = SemanticAnalyzer.getInstance();
 
 		ExpressionTreeNode root = semAnalyzer.generateExpressionTree(postfix);
@@ -63,6 +63,7 @@ public class ExpressionTreeGenerator {
 
 		Tokenizer tokenizer = new Tokenizer();
 		List<Token> tokens = tokenizer.parseTokens(infix);
+		
 
 		return infixToPostfix(tokens);
 	}
