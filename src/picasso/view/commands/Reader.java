@@ -16,7 +16,7 @@ import picasso.util.FileCommand;
 public class Reader extends FileCommand<Pixmap> {
 
 	/**
-	 * Creates a Reader object, which prompts users for image files to open
+	 * Creates a Reader object, which prompts users for files to open
 	 */
 	public Reader() {
 		super(JFileChooser.OPEN_DIALOG); 
