@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
+import picasso.errors.Error;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
@@ -158,6 +159,7 @@ public class ExpressionTreeGenerator {
 				}
 
 			} else {
+				Error error = new Error("Invalid Token " + token);
 				System.out.println("ERROR: No match: " + token);
 			}
 			// System.out.println("Postfix: " + postfixResult);

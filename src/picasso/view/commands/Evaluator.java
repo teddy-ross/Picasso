@@ -42,8 +42,14 @@ public class Evaluator implements Command<Pixmap> {
 			double evalY = imageToDomainScale(imageY, size.height);
 			for (int imageX = 0; imageX < size.width; imageX++) {
 				double evalX = imageToDomainScale(imageX, size.width);
-				Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
-				target.setColor(imageX, imageY, pixelColor);
+				if (expr == null) {
+					Error error = new Error("Invalid Expression");
+				}
+				else { 
+					Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
+					target.setColor(imageX, imageY, pixelColor);
+				}
+				
 			}
 		}
 	}
