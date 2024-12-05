@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests.SineTests;
+package tests.SinTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,14 +13,12 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Addition;
-import picasso.parser.language.expressions.Sine;
+import picasso.parser.language.expressions.Sin;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.functions.SineToken;
-import picasso.parser.tokens.operations.PlusToken;
+import picasso.parser.tokens.functions.SinToken;
 
 /**
  * 
@@ -40,23 +38,23 @@ class SemanticAnalyzerTest {
 	}
 
 	@Test
-	void testParseSine() {
+	void testParseSin() {
 
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));
-		tokens.push(new SineToken());
+		tokens.push(new SinToken());
 
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
-		assertEquals(new Sine(new X()), actual);
+		assertEquals(new Sin(new X()), actual);
 		
 		
 		tokens.push(new IdentifierToken("y"));
-		tokens.push(new SineToken());
+		tokens.push(new SinToken());
 		
 		actual = semAnalyzer.generateExpressionTree(tokens);
 		
-		assertEquals(new Sine(new Y()), actual);
+		assertEquals(new Sin(new Y()), actual);
 		
 	}
 

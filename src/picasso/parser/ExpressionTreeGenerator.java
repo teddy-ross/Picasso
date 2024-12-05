@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
+import picasso.errors.Error;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
@@ -21,6 +22,7 @@ public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
+	@SuppressWarnings("unused")
 	private static final int GROUPING = 1; // parentheses
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
@@ -158,6 +160,8 @@ public class ExpressionTreeGenerator {
 				}
 
 			} else {
+				@SuppressWarnings("unused")
+				Error error = new Error("Invalid Token " + token);
 				System.out.println("ERROR: No match: " + token);
 			}
 			// System.out.println("Postfix: " + postfixResult);

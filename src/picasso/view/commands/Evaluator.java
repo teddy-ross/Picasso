@@ -14,7 +14,6 @@ import picasso.view.Frame;
  * 
  * @author Robert C Duvall
  * @author Sara Sprenkle
- * @author Sylvia Agatako 
  */
 public class Evaluator implements Command<Pixmap> {
     public static final double DOMAIN_MIN = -1;
@@ -48,11 +47,15 @@ public class Evaluator implements Command<Pixmap> {
             double evalY = imageToDomainScale(imageY, size.height);
             for (int imageX = 0; imageX < size.width; imageX++) {
                 double evalX = imageToDomainScale(imageX, size.width);
-                Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
-                target.setColor(imageX, imageY, pixelColor);
+                if (expr == null) {
+					Error error = new Error("Invalid Expression");
+				}
+				else { 
+                    Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
+                    target.setColor(imageX, imageY, pixelColor);
             }
         }
-    }
+    }}
 
     /**
      * Convert from image space to domain space.
@@ -72,7 +75,7 @@ public class Evaluator implements Command<Pixmap> {
         String fileExpression = target.getExpression();
         String textExpression = container.getText();
 
-        // If both sources are available, prioritize text input
+        // Evaluate text input first
         if (textExpression != null && !textExpression.isEmpty()) {
             System.out.println("Using text expression: " + textExpression);
             return textExpression;
@@ -91,10 +94,11 @@ public class Evaluator implements Command<Pixmap> {
      * Creates the expression tree from the given expression string.
      * 
      * @param expression The input expression as a string.
-     * @return The root of the expression tree.
+     * @return The expression tree.
      */
     private ExpressionTreeNode createExpressionTree(String expression) {
         ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
         return expTreeGen.makeExpression(expression);
     }
+    // return new Multiply( new X(), new Y() );
 }
