@@ -22,6 +22,7 @@ public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
+	@SuppressWarnings("unused")
 	private static final int GROUPING = 1; // parentheses
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
@@ -159,6 +160,7 @@ public class ExpressionTreeGenerator {
 				}
 
 			} else {
+				@SuppressWarnings("unused")
 				Error error = new Error("Invalid Token " + token);
 				System.out.println("ERROR: No match: " + token);
 			}

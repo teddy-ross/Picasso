@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import picasso.parser.language.expressions.*;
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Cosine;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 

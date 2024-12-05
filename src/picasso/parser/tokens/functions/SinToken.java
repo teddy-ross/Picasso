@@ -4,9 +4,9 @@ package picasso.parser.tokens.functions;
  * Represents the sine function token
  * 
  */
-public class SineToken extends FunctionToken {
+public class SinToken extends FunctionToken {
 
-	public SineToken() {
+	public SinToken() {
 		super("Sine Function Token");
 	}
 

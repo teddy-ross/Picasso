@@ -1,17 +1,15 @@
 /**
  * 
  */
-package tests.SineTests;
+package tests.SinTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Sine;
+import picasso.parser.language.expressions.Sin;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.X;
 
@@ -29,8 +27,8 @@ class EvaluatorTests {
 	}
 
 	@Test
-	public void testSineEvaluation() {
-		Sine myTree = new Sine(new X());
+	public void testSinEvaluation() {
+		Sin myTree = new Sin(new X());
 
 		// some straightforward tests
 		assertEquals(new RGBColor(Math.sin(.2),Math.sin(.2), Math.sin(.2)), myTree.evaluate(.2, -1));

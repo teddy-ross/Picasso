@@ -1,9 +1,10 @@
 /**
  * 
  */
-package tests.CosineTests;
+package tests.SinTests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.chars.LeftParenToken;
 import picasso.parser.tokens.chars.RightParenToken;
-import picasso.parser.tokens.functions.CosineToken;
+import picasso.parser.tokens.functions.SinToken;
 
 /**
- * Tests that the cosine tokenization process works
- * @author Edward Ross
+ * Tests that the sine tokenization process works
+ * @author Sarina Cusumano 
  */
 class TokenizerTest {
 	
@@ -34,13 +35,15 @@ class TokenizerTest {
 	}
 
 	@Test
-	public void testTokenizeCosineFunctionExpression() {
-		String expression = "cosine(x)";
+	public void testTokenizeSinFunctionExpression() {
+		String expression = "sin(x)";
 		tokens = tokenizer.parseTokens(expression);
-		assertEquals(new CosineToken(), tokens.get(0));
+		assertEquals(new SinToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
+
 }
+
