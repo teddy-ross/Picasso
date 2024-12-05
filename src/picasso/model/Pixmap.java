@@ -40,6 +40,7 @@ public class Pixmap {
 	private String myFileName;
 	private BufferedImage myImage;
 	private Dimension mySize;
+	private String expression; // Expression string read from .exp files
 
 	/**
 	 * Create a default pixmap (300x300 black)
@@ -167,6 +168,17 @@ public class Pixmap {
 			mySize = newSize;
 		}
 	}
+	
+	public void setExpression(String expression) {
+		this.expression = expression;
+	}
+	
+	/**
+     * Gets the current expression.
+     */
+    public String getExpression() {
+        return expression;
+    }
 
 	/**
 	 * Read the image named by fileName

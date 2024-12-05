@@ -8,77 +8,97 @@ import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
-//import picasso.view.Frame;
 
 /**
- * Evaluate an expression for each pixel in a image.
+ * Evaluate an expression for each pixel in an image.
  * 
  * @author Robert C Duvall
  * @author Sara Sprenkle
  */
 public class Evaluator implements Command<Pixmap> {
-	public static final double DOMAIN_MIN = -1;
-	public static final double DOMAIN_MAX = 1;
-	
-	private Frame container;
-	
-	/**
-	 * 
-	 * @param container
-	 */
-	public Evaluator(Frame container) {
-		this.container = container;
-	}
+    public static final double DOMAIN_MIN = -1;
+    public static final double DOMAIN_MAX = 1;
 
-	/**
-	 * Evaluate an expression for each point in the image.
-	 */
-	public void execute(Pixmap target) {
-		// create the expression to evaluate just once
-		ExpressionTreeNode expr = createExpression();
-		// evaluate it for each pixel
-		Dimension size = target.getSize();
-		for (int imageY = 0; imageY < size.height; imageY++) {
-			double evalY = imageToDomainScale(imageY, size.height);
-			for (int imageX = 0; imageX < size.width; imageX++) {
-				double evalX = imageToDomainScale(imageX, size.width);
-				if (expr == null) {
+    private Frame container;
+
+    /**
+     * Constructor to initialize the evaluator with the frame.
+     * 
+     * @param container Frame containing user input or settings.
+     */
+    public Evaluator(Frame container) {
+        this.container = container;
+    }
+
+    /**
+     * Evaluate an expression for each point in the image.
+     */
+    @Override
+    public void execute(Pixmap target) {
+        // Determine the source of the expression
+        String expression = getExpression(target);
+
+        // Generate the expression tree
+        ExpressionTreeNode expr = createExpressionTree(expression);
+
+        // Evaluate the expression for each pixel
+        Dimension size = target.getSize();
+        for (int imageY = 0; imageY < size.height; imageY++) {
+            double evalY = imageToDomainScale(imageY, size.height);
+            for (int imageX = 0; imageX < size.width; imageX++) {
+                double evalX = imageToDomainScale(imageX, size.width);
+                if (expr == null) {
 					Error error = new Error("Invalid Expression");
 				}
 				else { 
-					Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
-					target.setColor(imageX, imageY, pixelColor);
-				}
-				
-			}
-		}
-	}
+                    Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
+                    target.setColor(imageX, imageY, pixelColor);
+            }
+        }
+    }}
 
-	/**
-	 * Convert from image space to domain space.
-	 */
-	protected double imageToDomainScale(int value, int bounds) {
-		double range = DOMAIN_MAX - DOMAIN_MIN;
-		return ((double) value / bounds) * range + DOMAIN_MIN;
-	}
+    /**
+     * Convert from image space to domain space.
+     */
+    protected double imageToDomainScale(int value, int bounds) {
+        double range = DOMAIN_MAX - DOMAIN_MIN;
+        return ((double) value / bounds) * range + DOMAIN_MIN;
+    }
 
-	/**
-	 * 
-	 * A place holder for a more interesting way to build the expression.
-	 */
-	private ExpressionTreeNode createExpression() {
-		// Note, when you're testing, you can use the ExpressionTreeGenerator to
-		// generate expression trees from strings, or you can create expression
-		// objects directly (as in the commented statement below).
-		
-		String test = container.getText();
-		System.out.println(container.getText());
+    /**
+     * Gets the expression from either the text field or the file.
+     * 
+     * @param target Pixmap containing the expression from the file.
+     * @return The chosen expression as a string.
+     */
+    private String getExpression(Pixmap target) {
+        String fileExpression = target.getExpression();
+        String textExpression = container.getText();
 
+        // Evaluate text input first
+        if (textExpression != null && !textExpression.isEmpty()) {
+            System.out.println("Using text expression: " + textExpression);
+            return textExpression;
+        }
 
-		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-		return expTreeGen.makeExpression(test);
+        if (fileExpression != null && !fileExpression.isEmpty()) {
+            System.out.println("Using file expression: " + fileExpression);
+            return fileExpression;
+        }
 
-		// return new Multiply( new X(), new Y() );
-	}
+        // If no valid input is found, throw an error
+        throw new IllegalArgumentException("No valid expression provided from text or file.");
+    }
 
+    /**
+     * Creates the expression tree from the given expression string.
+     * 
+     * @param expression The input expression as a string.
+     * @return The expression tree.
+     */
+    private ExpressionTreeNode createExpressionTree(String expression) {
+        ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+        return expTreeGen.makeExpression(expression);
+    }
+    // return new Multiply( new X(), new Y() );
 }
