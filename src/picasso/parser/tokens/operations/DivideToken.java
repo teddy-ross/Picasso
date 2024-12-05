@@ -6,6 +6,7 @@ import picasso.parser.tokens.chars.CharToken;
 /**
  * Represents the Divide sign token with a forwards slash
  * 
+ * @author Sanjog Basnet
  */
 public class DivideToken extends CharToken implements OperationInterface {
 	public DivideToken() {
