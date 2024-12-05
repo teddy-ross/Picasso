@@ -14,8 +14,7 @@ import picasso.view.Frame;
  * 
  * @author Robert C Duvall
  * @author Sara Sprenkle
- * @author Sylvia Agatako
- * 
+ * @author Sylvia Agatako 
  */
 public class Evaluator implements Command<Pixmap> {
     public static final double DOMAIN_MIN = -1;
