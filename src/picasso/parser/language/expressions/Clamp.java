@@ -9,6 +9,7 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public class Clamp extends UnaryFunction {
 
+	
 	/**
 	 * Create a clamp expression tree that takes as a parameter the given expression
 	 * 
@@ -18,16 +19,8 @@ public class Clamp extends UnaryFunction {
 		super(param);
 	}
 
-	private double clamp(double z) {
-		double outcome=z;
-		if (outcome>1) {
-			outcome=1;
-		}
-		if(outcome<-1) {
-			outcome=-1;
-		}
-			
-		return outcome;
+	public static double clamp(double z) {
+		return z = Math.max(-1, Math.min(z, 1));
 	}
 
 	/**
