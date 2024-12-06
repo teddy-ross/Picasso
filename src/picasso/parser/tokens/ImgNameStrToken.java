@@ -25,7 +25,7 @@ public class ImgNameStrToken extends Token {
 		if( o == this ) {
 			return true;
 		}
-		if (!(o instanceof IdentifierToken)) {
+		if (!(o instanceof ImgNameStrToken)) {
 			return false;
 		}
 		ImgNameStrToken rhs = (ImgNameStrToken) o;

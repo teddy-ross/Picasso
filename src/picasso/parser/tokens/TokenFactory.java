@@ -10,6 +10,8 @@ import java.util.HashMap;
 import picasso.parser.ParseException;
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.tokens.chars.CommaToken;
+import picasso.parser.tokens.chars.QuoteToken;
+
 import picasso.parser.tokens.chars.LeftBracketToken;
 import picasso.parser.tokens.chars.RightBracketToken;
 

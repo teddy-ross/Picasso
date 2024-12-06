@@ -25,10 +25,9 @@ public class ImgNameString extends ExpressionTreeNode {
 	@Override
 	public RGBColor evaluate(double x, double y) {
 		int pixelX = (int)((x+1)/2)*299 ;
-        int pixelY = (int)((x+1)/2)*299 ;
+        int pixelY = (int)((y+1)/2)*299 ;
         Color color = pixmap.getColor(pixelX,pixelY);
 		
-        
         double red = color.getRed();
         double green = color.getGreen();
         double blue = color.getBlue();
