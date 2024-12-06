@@ -5,10 +5,10 @@ package picasso.parser.tokens.functions;
  * Represents the Image Clip Token
  * @author Edward Ross
  */
-public class ImageclipToken extends FunctionToken{
+public class ImageClipToken extends FunctionToken{
 
-	public ImageclipToken() {
-		super("Image clip Token");
+	public ImageClipToken() {
+		super("Image Clip Token");
 	}
 
 }
