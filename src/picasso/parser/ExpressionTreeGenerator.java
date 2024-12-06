@@ -100,6 +100,8 @@ public class ExpressionTreeGenerator {
 				postfixResult.push(token);
 			} else if (token instanceof IdentifierToken) {
 				postfixResult.push(token);
+			}	else if (token instanceof StringToken) {
+					postfixResult.push(token);
 			} else if (token instanceof FunctionToken) {
 				operators.push(token);
 			} else if (token instanceof OperationInterface) {
@@ -137,6 +139,7 @@ public class ExpressionTreeGenerator {
 					throw new ParseException("Parentheses were mismatched.");
 				}
 
+
 			} else if (token instanceof LeftParenToken) {
 				operators.push(token);
 			} else if (token instanceof RightParenToken) {
@@ -159,12 +162,25 @@ public class ExpressionTreeGenerator {
 				if (operators.size() > 0 && operators.peek() instanceof FunctionToken) {
 					postfixResult.push(operators.pop());
 				}
+			} else if (token instanceof QuoteCharToken) {
+				// Until the token at the top of the stack is another
+				// quote, pop operators off the stack onto the output
+				// queue.
 
+				while (!operators.isEmpty() && !(operators.peek() instanceof QuoteCharToken)) {
+					postfixResult.push(operators.pop());
+				}
+
+				// If no left parentheses are encountered, either the
+				// separator was misplaced or parentheses were mismatched.
+				if (operators.isEmpty() || !(operators.peek() instanceof LeftParenToken)) {
+					throw new ParseException("Missing ending \".");
+				}
 			} else {
 				@SuppressWarnings("unused")
 				Error error = new Error("Invalid Token " + token);
-				throw new ParseException("HAHAH YOU SUCK");
-				//System.out.println("ERROR: No match: " + token);
+				System.out.println("ERROR: No match: " + token);
+
 			}
 			// System.out.println("Postfix: " + postfixResult);
 		}
@@ -200,6 +216,9 @@ public class ExpressionTreeGenerator {
 		// class that gives the order of operation?
 
 		if (token instanceof PlusToken) {
+			return ADD_OR_SUBTRACT;
+		}
+		if (token instanceof MinusToken) {
 			return ADD_OR_SUBTRACT;
 		}
 		else if (token instanceof DivideToken) {
