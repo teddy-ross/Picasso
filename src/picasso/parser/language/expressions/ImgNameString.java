@@ -18,7 +18,7 @@ public class ImgNameString extends ExpressionTreeNode {
 	private Pixmap pixmap;
 	
 	public ImgNameString(String imageName) {
-        pixmap = new Pixmap("images/" + imageName); // Load the image onto the pixmap
+        pixmap = new Pixmap("images/"+ imageName); // Load the image onto the pixmap
     }
 	
 	
