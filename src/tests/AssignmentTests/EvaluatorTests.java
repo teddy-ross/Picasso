@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.Cosine;
+import picasso.parser.language.expressions.Equals;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
+import picasso.parser.tokens.operations.EqualsToken;
 
 /**
  * 
