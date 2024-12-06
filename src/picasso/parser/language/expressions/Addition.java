@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
 public class Addition extends BinaryOperator {
 
 	/**
-	 * Creates a division expression tree that takes as parameter the given expression
+	 * Creates a addition expression tree that takes as parameter the given expression
 	 * 
 	 * @param left 
 	 * @param right 

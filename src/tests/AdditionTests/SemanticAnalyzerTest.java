@@ -37,7 +37,7 @@ class SemanticAnalyzerTest {
 	}
 
 	@Test
-	void testParseDivision() {
+	void testParseAddition() {
 
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));
