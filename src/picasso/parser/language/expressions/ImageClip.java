@@ -1,7 +1,6 @@
 package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Clamp; 
 
 /**
  * Represents a constant in the Picasso language.

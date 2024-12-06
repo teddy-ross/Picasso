@@ -2,12 +2,13 @@ package picasso.parser.tokens.functions;
 
 
 /**
-* Represents an image clip function token.
-* @author Nisha 
-*/
-public class ImageclipToken extends FunctionToken {
-	
+ * Represents the Image Clip Token
+ * @author Edward Ross
+ */
+public class ImageclipToken extends FunctionToken{
+
 	public ImageclipToken() {
-		super("ImageClip Function Token");
+		super("Image clip Token");
 	}
+
 }
