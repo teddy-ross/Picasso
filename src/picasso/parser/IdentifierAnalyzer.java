@@ -18,7 +18,7 @@ import picasso.parser.tokens.Token;
  */
 public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 
-	public static Map<String, ExpressionTreeNode> idToExpression = new HashMap<String, ExpressionTreeNode>();
+	static Map<String, ExpressionTreeNode> idToExpression = new HashMap<String, ExpressionTreeNode>();
 
 	static {
 		// We always have x and y defined.
