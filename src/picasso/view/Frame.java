@@ -67,7 +67,7 @@ public class Frame extends JFrame {
 		return t.getText();
 	}
 	
-	public JTextField getTextField() {
+	public JTextField getTextField() { 
 	    return t;  
 	}
 		
