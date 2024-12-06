@@ -1,6 +1,5 @@
 package picasso.parser.language.expressions;
 
-import picasso.parser.IdentifierAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.Clamp; 
 
@@ -17,13 +16,15 @@ public class ImageClip extends ExpressionTreeNode {
 	private ExpressionTreeNode pary;
 
 	/**
-	 * @param var
+	 * @param imagenamestring
+	 * @param expression
 	 * @param expression
 	 */
 	public ImageClip(ImgNameString imgstr, ExpressionTreeNode parx, ExpressionTreeNode pary) {
+		this.imgstr=imgstr;
 		this.parx = parx;
 		this.pary = pary;
-		this.imgstr=imgstr;
+		
 	}
 	public RGBColor evaluate(double x, double y) {
 		double expressionx = Clamp.clamp((parx.evaluate(x,y)).getRed());
