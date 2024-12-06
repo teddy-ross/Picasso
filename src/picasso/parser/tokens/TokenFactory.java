@@ -45,14 +45,13 @@ public class TokenFactory {
 			case '[':
 				// parse a color token if it starts with a [
 				return parseColorToken(tokenizer);
-	           case '\"':
-	        
-	                return new ImgNameStrToken(tokenizer.sval);
+			case '\"':
+				return new ImgNameStrToken(tokenizer.sval);
 			default:
 				Token ct = CharTokenFactory.getToken(result);
 
 				return ct;
-			
+
 			}
 			
 			// TODO: Handle quoted strings
