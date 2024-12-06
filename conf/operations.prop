@@ -1,2 +1,6 @@
 +=Plus
 /=Divide
+*=Multiply
+%=Mod
+/=Divide
+=Equals
