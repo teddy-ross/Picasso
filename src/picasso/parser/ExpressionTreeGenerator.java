@@ -163,7 +163,8 @@ public class ExpressionTreeGenerator {
 			} else {
 				@SuppressWarnings("unused")
 				Error error = new Error("Invalid Token " + token);
-				System.out.println("ERROR: No match: " + token);
+				throw new ParseException("HAHAH YOU SUCK");
+				//System.out.println("ERROR: No match: " + token);
 			}
 			// System.out.println("Postfix: " + postfixResult);
 		}
@@ -202,6 +203,9 @@ public class ExpressionTreeGenerator {
 			return ADD_OR_SUBTRACT;
 		}
 		else if (token instanceof DivideToken) {
+			return MULTIPLY_OR_DIVIDE;
+		}
+		else if (token instanceof MultiplyToken) {
 			return MULTIPLY_OR_DIVIDE;
 		}
 		else {
