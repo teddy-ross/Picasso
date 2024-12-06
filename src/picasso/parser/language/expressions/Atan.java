@@ -3,15 +3,15 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the tan function in the Picasso language.
+ * Represents the arc tan function in the Picasso language.
  * 
  * @author Sarina Cusumano
  *
  */
 
-public class aTan extends UnaryFunction{
+public class Atan extends UnaryFunction{
 	
-	public aTan(ExpressionTreeNode param) {
+	public Atan(ExpressionTreeNode param) {
 		super(param);
 	}
 

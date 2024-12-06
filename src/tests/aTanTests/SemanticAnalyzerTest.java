@@ -3,6 +3,7 @@ package tests.aTanTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+
 import java.util.Stack;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,12 +11,12 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.aTan;
+import picasso.parser.language.expressions.Atan;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.functions.aTanToken;
+import picasso.parser.tokens.functions.AtanToken;
 
 /**
  * Unit tests for the SemanticAnalyzer to verify parsing of arc tangent expressions.
@@ -45,19 +46,19 @@ class SemanticAnalyzerTest {
         // Test for atan(x)
         Stack<Token> tokens = new Stack<>();
         tokens.push(new IdentifierToken("x"));
-        tokens.push(new aTanToken());
+        tokens.push(new AtanToken());
 
         ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
-        assertEquals(new aTan(new X()), actual);
+        assertEquals(new Atan(new X()), actual);
 
         // Test for atan(y)
         tokens.clear();
         tokens.push(new IdentifierToken("y"));
-        tokens.push(new aTanToken());
+        tokens.push(new AtanToken());
 
         actual = semAnalyzer.generateExpressionTree(tokens);
 
-        assertEquals(new aTan(new Y()), actual);
+        assertEquals(new Atan(new Y()), actual);
     }
 }

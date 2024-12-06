@@ -6,9 +6,9 @@ package picasso.parser.tokens.functions;
  * 
  */
 
-public class aTanToken extends FunctionToken {
+public class AtanToken extends FunctionToken {
 
-	public aTanToken() {
+	public AtanToken() {
 		super("Arc Tangent Function Token.");
 	}
 

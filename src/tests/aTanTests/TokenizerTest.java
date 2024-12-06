@@ -3,6 +3,7 @@ package tests.aTanTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,7 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.chars.LeftParenToken;
 import picasso.parser.tokens.chars.RightParenToken;
-import picasso.parser.tokens.functions.aTanToken;
+import picasso.parser.tokens.functions.AtanToken;
 
 /**
  * Tests that the arc tangent tokenization process works
@@ -44,7 +45,7 @@ class TokenizerTest {
         tokens = tokenizer.parseTokens(expression);
 
         // Verify tokens are correctly identified
-        assertEquals(new aTanToken(), tokens.get(0)); 
+        assertEquals(new AtanToken(), tokens.get(0)); 
         assertEquals(new LeftParenToken(), tokens.get(1)); 
         assertEquals(new IdentifierToken("x"), tokens.get(2)); 
         assertEquals(new RightParenToken(), tokens.get(3)); 

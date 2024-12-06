@@ -4,9 +4,10 @@ package tests.aTanTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import picasso.parser.language.expressions.aTan;
+import picasso.parser.language.expressions.Atan;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.X;
 
@@ -32,7 +33,7 @@ class EvaluatorTests {
      */
     @Test
     public void testArcTangentEvaluation() {
-        aTan myTree = new aTan(new X());
+        Atan myTree = new Atan(new X());
 
         // Simple test cases
         assertEquals(new RGBColor(Math.atan(0.9), Math.atan(0.9), Math.atan(0.9)), myTree.evaluate(0.9, -1));
