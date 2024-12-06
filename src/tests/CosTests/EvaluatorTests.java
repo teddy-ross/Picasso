@@ -1,16 +1,13 @@
 /**
  * 
  */
-package tests.CosineTests;
+package tests.CosTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Cosine;
+import picasso.parser.language.expressions.Cos;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.X;
 
@@ -28,8 +25,8 @@ class EvaluatorTests {
 	}
 
 	@Test
-	public void testCosineEvaluation() {
-		Cosine myTree = new Cosine(new X());
+	public void testCosEvaluation() {
+		Cos myTree = new Cos(new X());
 
 		// some straightforward tests
 		assertEquals(new RGBColor(Math.cos(.9),Math.cos(.9), Math.cos(.9)), myTree.evaluate(.9, -1));

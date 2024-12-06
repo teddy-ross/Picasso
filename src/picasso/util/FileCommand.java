@@ -1,6 +1,7 @@
 package picasso.util;
 
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * An abstract command that allows access to the file system through a
@@ -37,6 +38,18 @@ public abstract class FileCommand<T> implements Command<T> {
 		if (response == JFileChooser.APPROVE_OPTION) {
 			return ourChooser.getSelectedFile().getPath();
 		}
+		
 		return null;
 	}
+	
+	/**
+	 * Create a filter for file chosen by the JFileChooser
+	 * 
+	 * @param filter the FileNameExtensionFilter to set.
+	 */
+	protected void setFileFilter(FileNameExtensionFilter filter) {
+	    ourChooser.setFileFilter(filter);
+	    
+	}
+
 }

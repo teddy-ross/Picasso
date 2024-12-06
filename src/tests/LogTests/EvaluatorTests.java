@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
 
 /**
