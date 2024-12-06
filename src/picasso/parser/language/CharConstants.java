@@ -15,7 +15,7 @@ public class CharConstants {
 	public static final char EQUAL = '=';
 	public static final char PLUS = '+';
 	public static final char MINUS = '-';
-	public static final char STAR = '*';
+	public static final char MULTIPLY = '*';
 	public static final char DIVIDE = '/';
 	public static final char MOD = '%';
 	public static final char APOSTROPHE = '\'';
