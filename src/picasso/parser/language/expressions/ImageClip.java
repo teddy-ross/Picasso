@@ -25,6 +25,7 @@ public class ImageClip extends ExpressionTreeNode {
 		this.pary = pary;
 		
 	}
+	@Override
 	public RGBColor evaluate(double x, double y) {
 		double expressionx = Clamp.clamp((parx.evaluate(x,y)).getRed());
 		double expressiony = Clamp.clamp((pary.evaluate(x,y)).getRed());
