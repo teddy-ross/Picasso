@@ -4,7 +4,8 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
-
+import picasso.errors.*;
+import picasso.errors.Error;
 /**
  * Class for manipulating graphics images, originally developed in C++.
  * 
@@ -191,6 +192,7 @@ public class Pixmap {
 			myImage = ImageIO.read(new File(myFileName));
 			mySize = new Dimension(myImage.getWidth(), myImage.getHeight());
 		} catch (IOException e) {
+			Error error = new Error("File does not exist");
 			e.printStackTrace();
 		}
 	}

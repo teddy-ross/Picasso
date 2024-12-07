@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests.AdditionTests;
+package tests.SubtractionTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Addition;
+import picasso.parser.language.expressions.Subtraction;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.operations.PlusToken;
+import picasso.parser.tokens.operations.MinusToken;
 
 /**
  * 
@@ -37,16 +37,16 @@ class SemanticAnalyzerTest {
 	}
 
 	@Test
-	void testParseAddition() {
+	void testParseSubtraction() {
 
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));
 		tokens.push(new IdentifierToken("y"));
-		tokens.push(new PlusToken());
+		tokens.push(new MinusToken());
 
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
-		assertEquals(new Addition(new X(), new Y()), actual);
+		assertEquals(new Subtraction(new X(), new Y()), actual);
 		
 		
 		

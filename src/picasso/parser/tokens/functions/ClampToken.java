@@ -14,4 +14,10 @@ public class ClampToken extends FunctionToken {
 		super("Clamp Function Token");
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> 590eae6dfab0d16dcd6a86bca2661d2e68e5554c

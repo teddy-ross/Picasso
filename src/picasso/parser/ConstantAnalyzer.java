@@ -8,6 +8,7 @@ import picasso.parser.language.expressions.Constant;
 import picasso.parser.tokens.NumberToken;
 import picasso.parser.tokens.Token;
 
+
 /**
  * Analyzer for a constant, must be between [-1, 1]
  * 
@@ -31,7 +32,7 @@ public class ConstantAnalyzer implements SemanticAnalyzerInterface {
 
 		// Check that the number is a valid number
 		double value = token.value();
-
+ 
 		// Would violate the preconditions of the constant
 		if (value < -1 || value > 1) {
 			throw new ParseException("Constant is out of range  [-1, 1]");

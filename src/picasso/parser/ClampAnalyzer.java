@@ -23,4 +23,8 @@ public class ClampAnalyzer implements SemanticAnalyzerInterface{
 				tokens);
 		return new Clamp(paramETN);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 590eae6dfab0d16dcd6a86bca2661d2e68e5554c
