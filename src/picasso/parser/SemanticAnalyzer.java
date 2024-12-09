@@ -10,6 +10,7 @@ import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.TokenFactory;
+import picasso.errors.Error;
 
 /**
  * SemanticAnalyzer calls appropriate SemanticAnalyzer for the given token
@@ -153,6 +154,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
 		if (tokens.isEmpty()) {
 			// XXX: Is this the only reason that the token stack is empty?
+			Error error = new Error("Missing argument(s)");
 			throw new ParseException("Expected another argument.");
 		}
 
