@@ -1,8 +1,6 @@
 package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.ParseException;
-import picasso.errors.Error;
 
 /**
  * Represents the Addition operator in the Picasso language.
@@ -23,14 +21,6 @@ public class Addition extends BinaryOperator {
 	}
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		if(this.left == null) {
-			Error error = new Error("Missing operator(s)");
-			throw new ParseException("this.left is null");
-		}
-		else if (this.right == null) {
-			Error error = new Error("Missing operator(s)");
-			throw new ParseException("this.right is null");
-		}
 		RGBColor l = left.evaluate(x, y);
 		RGBColor r = right.evaluate(x, y);
 		double red = l.getRed() + r.getRed();

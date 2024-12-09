@@ -125,6 +125,7 @@ public enum ReferenceForExpressionEvaluations {
 		}
 	};
 
+
 	// Do arithmetic operation represented by this constant
 	abstract public RGBColor evaluate(RGBColor left, RGBColor right);
 }

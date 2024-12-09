@@ -1,6 +1,5 @@
 package picasso.parser;
 
-import picasso.errors.Error;
 /**
  * Describe an exception that occurred during parsing.
  * 
