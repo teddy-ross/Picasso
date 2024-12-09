@@ -2,8 +2,9 @@ package picasso.parser;
 
 import java.util.Stack;
 
+
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Division;
+import picasso.parser.language.expressions.Exponentiate;
 import picasso.parser.tokens.Token;
 
 /**
@@ -20,7 +21,7 @@ public class ExponentiateAnalyzer implements SemanticAnalyzerInterface {
 		tokens.pop(); // Remove the ^ token
 		ExpressionTreeNode leftETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode rightETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Division(leftETN, rightETN);
+		return new Exponentiate(leftETN, rightETN);
 
 	}
 }
