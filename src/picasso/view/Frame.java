@@ -31,7 +31,7 @@ public class Frame extends JFrame {
 
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
-		commands.add("Open", new Reader(null));
+		commands.add("Open", new Reader(this));
 		
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
 		t = new JTextField(20);
@@ -67,10 +67,9 @@ public class Frame extends JFrame {
 		return t.getText();
 	}
 	
-	public JTextField getTextField() {
-		return t;
-
-	
+	public JTextField getTextField() { 
+	    return t;  
+	}
 		
 }
-}
+
