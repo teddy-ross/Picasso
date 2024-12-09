@@ -11,8 +11,7 @@ import picasso.errors.Error;
 public class ParseException extends RuntimeException {
 
 	public ParseException(String message) {
-		super("ParseException: " + message);
-		Error error = new Error("Invalid Expression");
+		super(message);
 	}
 
 }
