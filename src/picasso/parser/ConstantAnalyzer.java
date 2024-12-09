@@ -2,7 +2,6 @@ package picasso.parser;
 
 import java.util.Stack;
 
-import picasso.errors.Error;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.Constant;
 import picasso.parser.tokens.NumberToken;

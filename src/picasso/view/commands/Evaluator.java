@@ -9,7 +9,7 @@ import picasso.parser.ParseException;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
-import picasso.errors.Error;
+import picasso.util.Error;
 
 /**
  * Evaluate an expression for each pixel in an image.
@@ -46,7 +46,7 @@ public class Evaluator implements Command<Pixmap> {
 
 			// Generate the expression tree
 			expr = createExpressionTree(expression);
-			System.out.println("Here");
+			
 		} catch (ParseException p) {
 			Error error = new Error("Invalid Expression: " + p.getMessage());
 			p.printStackTrace();
