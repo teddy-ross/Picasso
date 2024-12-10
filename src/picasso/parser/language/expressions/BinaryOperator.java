@@ -56,7 +56,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 		BinaryOperator bo = (BinaryOperator) o;
 
 		// check if their parameters are equal
-		if (!(this.left.equals(bo.left)) && (this.right.equals(bo.right))) {
+		if (!(this.left.equals(bo.left)) || !(this.right.equals(bo.right))){
 			return false;
 		}
 		return true;
