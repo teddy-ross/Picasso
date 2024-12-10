@@ -2,7 +2,7 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Represents the perlinBW Token
+ * Represents the Perlin Color Token
  * @author Edward Ross
  * 
  */
