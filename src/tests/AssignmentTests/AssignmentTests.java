@@ -21,7 +21,7 @@ import picasso.parser.tokens.operations.EqualsToken;
  * 
  * @author Nisha Walvekar
  */
-class EvaluatorTests {
+class AssignmentTests {
 	
 	String testVar = new String("a");
 	X x = new X();

@@ -191,6 +191,7 @@ public class Pixmap {
 			myImage = ImageIO.read(new File(myFileName));
 			mySize = new Dimension(myImage.getWidth(), myImage.getHeight());
 		} catch (IOException e) {
+			Error error = new Error("File does not exist");
 			e.printStackTrace();
 		}
 	}

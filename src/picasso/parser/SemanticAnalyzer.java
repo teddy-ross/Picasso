@@ -10,6 +10,7 @@ import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.TokenFactory;
+import picasso.errors.Error;
 
 /**
  * SemanticAnalyzer calls appropriate SemanticAnalyzer for the given token
@@ -84,6 +85,9 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
 		// TODO: Are there any others that should be added?
 		// Is there a better way to create this mapping?
+		tokenName = TOKENS_PACKAGE_NAME + "StringToken";
+		parserName = PARSER_PACKAGE + "StringAnalyzer";
+		addSemanticAnalyzerMapping(tokenName, parserName);
 	}
 
 	/**
