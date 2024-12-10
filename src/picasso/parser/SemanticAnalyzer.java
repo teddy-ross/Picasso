@@ -82,6 +82,12 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
  		tokenName = TOKENS_PACKAGE_NAME + "functions.YCrCbToRGBToken";
  		parserName = PARSER_PACKAGE + "YCrCbToRGBAnalyzer";
  		addSemanticAnalyzerMapping(tokenName, parserName);
+ 		
+// 		//Negate Analyzer
+ 		tokenName = TOKENS_PACKAGE_NAME + "operations.NegateToken";
+ 		parserName = PARSER_PACKAGE + "NegateAnalyzer";
+ 		addSemanticAnalyzerMapping(tokenName, parserName);
+
 
 		// TODO: Are there any others that should be added?
 		// Is there a better way to create this mapping?

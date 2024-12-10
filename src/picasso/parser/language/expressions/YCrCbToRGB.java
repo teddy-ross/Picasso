@@ -15,15 +15,16 @@ public class YCrCbToRGB extends UnaryFunction {
     @Override
     public RGBColor evaluate(double x, double y) {
         RGBColor paramVal = param.evaluate(x, y);
-        double yComponent = paramVal.getRed();
-        double cr = paramVal.getGreen();
-        double cb = paramVal.getBlue();
+        double r = paramVal.getRed();
+        double g = paramVal.getGreen();
+        double b = paramVal.getBlue();
 
         // Convert to RGB
-        double r = yComponent + cr / 0.713;
-        double g = yComponent - 0.344 * cb - 0.714 * cr;
-        double b = yComponent + cb / 0.564;
-
-        return new RGBColor(r, g, b);
+        double red = r + b * 1.4022;
+		double green = r + g * -0.3456 + b * -0.7145;
+		double blue = r + g * 1.7710;
+		
+		return new RGBColor(red, green, blue);
+ 
     }
 }

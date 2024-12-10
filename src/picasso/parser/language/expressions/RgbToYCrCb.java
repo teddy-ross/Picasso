@@ -20,11 +20,10 @@ public class RgbToYCrCb extends UnaryFunction {
         double g = paramVal.getGreen();
         double b = paramVal.getBlue();
 
-       // Convert to YCrCb
-        double yComponent = 0.299 * r + 0.587 * g + 0.114 * b;
-        double cr = (r - yComponent) * 0.713;
-        double cb = (b - yComponent) * 0.564;
-
-        return new RGBColor(yComponent, cr, cb);
+       // Convert to YCrCb       
+        double red = r * 0.2989 + g * 0.5866 + b * 0.1145;
+		double green = r * -0.1687 + g * -0.3312 + b * 0.5;
+		double blue = r * 0.5000 + g * -0.4183 + b * -0.0816;
+        return new RGBColor(red, green, blue);
     }
 }

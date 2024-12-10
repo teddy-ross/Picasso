@@ -16,18 +16,25 @@ public class PerlinBW extends ExpressionTreeNode {
         this.parx = parx;
         this.pary = pary;
     }
+    
     @Override
     public RGBColor evaluate(double x, double y) {
-      
-        double expressionX = parx.evaluate(x, y).getRed();
-        double expressionY = pary.evaluate(x, y).getRed();
+        RGBColor paramVal1 = parx.evaluate(x, y);
+        RGBColor paramVal2 = pary.evaluate(x, y);
         
+        double r_left = paramVal1.getRed();
+        double g_left = paramVal1.getGreen();
+        double b_left = paramVal1.getBlue();
         
-        double noiseVal = (ImprovedNoise.noise(expressionX , expressionY , 0) + 1) / 2;
+        double r_right = paramVal2.getRed();
+        double g_right = paramVal2.getGreen();
+        double b_right = paramVal2.getBlue();
+        
+
+		double grey = ImprovedNoise.noise(r_left + r_right, g_left + g_right, b_left + b_right);
+		return new RGBColor(grey, grey, grey);
+	}
     
-        return new RGBColor(noiseVal, noiseVal, noiseVal);
-   
-    }
     @Override
     public String toString() {
         String classname = this.getClass().getName();
