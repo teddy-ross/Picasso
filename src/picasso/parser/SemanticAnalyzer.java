@@ -88,6 +88,11 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		tokenName = TOKENS_PACKAGE_NAME + "StringToken";
 		parserName = PARSER_PACKAGE + "StringAnalyzer";
 		addSemanticAnalyzerMapping(tokenName, parserName);
+		
+		tokenName = TOKENS_PACKAGE_NAME + "functions.PerlinColorToken";
+	    tokenName = PARSER_PACKAGE + "PerlinColorAnalyzer";
+	    addSemanticAnalyzerMapping(tokenName, parserName);
+	    
 	}
 
 	/**
