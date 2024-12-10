@@ -1,4 +1,4 @@
-package picasso.errors;
+package picasso.util;
 
 import javax.swing.*;
 

@@ -4,15 +4,14 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Clamp Token
- * @author Sylvia Agatako
- * 
+ * Represents the Clamp Token
+ * @author Nisha Walvekar
  */
-
 public class ClampToken extends FunctionToken {
+
 	
 	public ClampToken() {
-		super("Clamp Function Token.");
+		super("Clamp Function Token");
 	}
 
 }

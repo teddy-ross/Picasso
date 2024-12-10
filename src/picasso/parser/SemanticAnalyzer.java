@@ -10,6 +10,7 @@ import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.TokenFactory;
+import picasso.errors.Error;
 
 /**
  * SemanticAnalyzer calls appropriate SemanticAnalyzer for the given token
@@ -65,9 +66,28 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		tokenName = TOKENS_PACKAGE_NAME + "ColorToken";
 		parserName = PARSER_PACKAGE + "ColorAnalyzer";
 		addSemanticAnalyzerMapping(tokenName, parserName);
+		
+		//perlinBW analyzer
+		
+	    tokenName = TOKENS_PACKAGE_NAME + "functions.PerlinBWToken";
+	    tokenName = PARSER_PACKAGE + "PerlinBWAnalyzer";
+	    addSemanticAnalyzerMapping(tokenName, parserName);
+	    
+        // RGBToYCrCb analyzer
+ 		tokenName = TOKENS_PACKAGE_NAME + "functions.RgbToYCrCbToken";
+ 		parserName = PARSER_PACKAGE + "RgbToYCrCbAnalyzer";
+ 		addSemanticAnalyzerMapping(tokenName, parserName);
+ 		
+ 		//YCrCbToRGB Analyzer
+ 		tokenName = TOKENS_PACKAGE_NAME + "functions.YCrCbToRGBToken";
+ 		parserName = PARSER_PACKAGE + "YCrCbToRGBAnalyzer";
+ 		addSemanticAnalyzerMapping(tokenName, parserName);
 
 		// TODO: Are there any others that should be added?
 		// Is there a better way to create this mapping?
+		tokenName = TOKENS_PACKAGE_NAME + "StringToken";
+		parserName = PARSER_PACKAGE + "StringAnalyzer";
+		addSemanticAnalyzerMapping(tokenName, parserName);
 	}
 
 	/**

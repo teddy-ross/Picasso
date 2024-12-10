@@ -10,7 +10,6 @@ import java.util.HashMap;
 import picasso.parser.ParseException;
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.tokens.chars.CommaToken;
-import picasso.parser.tokens.chars.LeftBracketToken;
 import picasso.parser.tokens.chars.RightBracketToken;
 
 /**
@@ -47,7 +46,7 @@ public class TokenFactory {
 				return parseColorToken(tokenizer);
 	           case '\"':
 	        
-	                return new ImgNameStrToken(tokenizer.sval);
+	                return new StringToken(tokenizer.sval);
 			default:
 				Token ct = CharTokenFactory.getToken(result);
 

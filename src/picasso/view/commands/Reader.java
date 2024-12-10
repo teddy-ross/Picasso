@@ -13,7 +13,7 @@ import picasso.view.Frame;
  * Open the chosen image file and display in the Pixmap target.
  * 
  * @author Robert C Duvall
- * @author Sylvia Agatako
+ * 
  */
 public class Reader extends FileCommand<Pixmap> {
 	private Frame container; 

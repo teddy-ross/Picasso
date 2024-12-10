@@ -26,6 +26,7 @@ public class Addition extends BinaryOperator {
 		double red = l.getRed() + r.getRed();
 		double green = l.getGreen() + r.getGreen();
 		double blue = l.getBlue() + r.getBlue();	
+		
 	return new RGBColor(red,green,blue);
 	}
 	

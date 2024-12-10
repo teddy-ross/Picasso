@@ -45,7 +45,7 @@ class EvaluatorTests {
         double[] testValues = { -0.7, -0.00001, 0.000001, 0.5 };
 
         for (double testVal : testValues) {
-            double ceilOfTestVal = Math.ceil(testVal);
+            double ceilOfTestVal = Math.clamp(testVal, testVal, testVal);
             assertEquals(new RGBColor(ceilOfTestVal, ceilOfTestVal, ceilOfTestVal), myTree.evaluate(testVal, -1));
             assertEquals(new RGBColor(ceilOfTestVal, ceilOfTestVal, ceilOfTestVal), myTree.evaluate(testVal, testVal));
         }
