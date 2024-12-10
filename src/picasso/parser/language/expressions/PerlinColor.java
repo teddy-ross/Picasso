@@ -9,8 +9,8 @@ import picasso.model.*;
  *@author Edward Ross
  */
 public class PerlinColor extends ExpressionTreeNode {
-    private ExpressionTreeNode parx;
-    private ExpressionTreeNode pary;
+    private final ExpressionTreeNode parx;
+    private final ExpressionTreeNode pary;
     
     public PerlinColor(ExpressionTreeNode parx, ExpressionTreeNode pary) {
         this.parx = parx;
@@ -22,10 +22,11 @@ public class PerlinColor extends ExpressionTreeNode {
         double expressionX = parx.evaluate(x, y).getRed();
         double expressionY = pary.evaluate(x, y).getRed();
         
-        
-        double noiseVal = (ImprovedNoise.noise(expressionX , expressionY , 0) + 1) / 2;
+        double red = (ImprovedNoise.noise(expressionX, expressionY, 0) + 1) / 2;
+        double green = (ImprovedNoise.noise(expressionX, expressionY, 1) + 1) / 2;
+        double blue = (ImprovedNoise.noise(expressionX, expressionY, 2) + 1) / 2;
     
-        return new RGBColor(noiseVal, noiseVal, noiseVal);
+        return new RGBColor(red, green, blue);
    
     }
     @Override
