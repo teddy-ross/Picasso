@@ -19,8 +19,10 @@ public class PlusAnalyzer implements SemanticAnalyzerInterface {
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop();
-		ExpressionTreeNode leftETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		
 		ExpressionTreeNode rightETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		ExpressionTreeNode leftETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		
 		return new Addition(leftETN, rightETN);
 	}
 

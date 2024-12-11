@@ -55,6 +55,7 @@ class EvaluatorTests {
 	public void setUp() throws Exception {
 	}
 
+
 	@Test
 	public void testCosineEvaluation() {
 		Cos myTree = new Cos(new X());
@@ -81,5 +82,4 @@ class EvaluatorTests {
 	}
 
 }
-
 

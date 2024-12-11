@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
-import picasso.errors.Error;
+import picasso.util.Error;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
@@ -22,10 +22,11 @@ public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
-	@SuppressWarnings("unused")
-	private static final int GROUPING = 1; // parentheses
-	private static final int ADD_OR_SUBTRACT = 2;
-	private static final int MULTIPLY_OR_DIVIDE = 3;
+//	@SuppressWarnings("unused")
+//	private static final int GROUPING = 1; // parentheses
+//	private static final int ADD_OR_SUBTRACT = 2;
+//	private static final int MULTIPLY_OR_DIVIDE = 3;
+//	private static final int EXPONENTIATE = 4;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -94,14 +95,11 @@ public class ExpressionTreeGenerator {
 
 		while (iter.hasNext()) {
 			Token token = iter.next();
-			if (token instanceof NumberToken) {
+			if (token instanceof NumberToken 
+					|| token instanceof ColorToken 
+					|| token instanceof IdentifierToken 
+					|| token instanceof StringToken ) {
 				postfixResult.push(token);
-			} else if (token instanceof ColorToken) {
-				postfixResult.push(token);
-			} else if (token instanceof IdentifierToken) {
-				postfixResult.push(token);
-			}	else if (token instanceof StringToken) {
-					postfixResult.push(token);
 			} else if (token instanceof FunctionToken) {
 				operators.push(token);
 			} else if (token instanceof OperationInterface) {
@@ -164,9 +162,8 @@ public class ExpressionTreeGenerator {
 				}
 			} else if (token instanceof QuoteCharToken) {
 				// Until the token at the top of the stack is another
-				// quote, pop operators off the stack onto the output
+				// quote, pop off the stack onto the output
 				// queue.
-
 				while (!operators.isEmpty() && !(operators.peek() instanceof QuoteCharToken)) {
 					postfixResult.push(operators.pop());
 				}
@@ -177,8 +174,6 @@ public class ExpressionTreeGenerator {
 					throw new ParseException("Missing ending \".");
 				}
 			} else {
-				@SuppressWarnings("unused")
-				Error error = new Error("Invalid Token " + token);
 				System.out.println("ERROR: No match: " + token);
 
 			}
@@ -210,27 +205,30 @@ public class ExpressionTreeGenerator {
 	 */
 	private int orderOfOperation(Token token) {
 
-		// TODO: Need to finish with other operators.
+	
 
-		// TODO: DISCUSS: Is it better to have a method in the OperatorToken
-		// class that gives the order of operation?
-
-		if (token instanceof PlusToken) {
-			return ADD_OR_SUBTRACT;
-		}
-		if (token instanceof MinusToken) {
-			return ADD_OR_SUBTRACT;
-		}
-		else if (token instanceof DivideToken) {
-			return MULTIPLY_OR_DIVIDE;
-		}
-		else if (token instanceof MultiplyToken) {
-			return MULTIPLY_OR_DIVIDE;
-		}
-		else {
-			return CONSTANT;
-		}
+//		if (token instanceof PlusToken) {
+//			return ADD_OR_SUBTRACT;
+//		}
+//		if (token instanceof MinusToken) {
+//			return ADD_OR_SUBTRACT;
+//		}
+//		else if (token instanceof DivideToken) {
+//			return MULTIPLY_OR_DIVIDE;
+//		}
+//		else if (token instanceof MultiplyToken) {
+//			return MULTIPLY_OR_DIVIDE;
+//		}
+//		else if (token instanceof ExponentiateToken) {
+//			return EXPONENTIATE;
+//		}
+//		else {
+//			return CONSTANT;
+//		}
 		
-		
+		if (token instanceof OperationInterface) {
+			return ((OperationInterface) token).getPrecedence();
+		}
+		return CONSTANT;
 	}
 }

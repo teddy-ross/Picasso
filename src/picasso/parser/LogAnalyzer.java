@@ -11,7 +11,7 @@ import picasso.parser.tokens.Token;
  * 
  * @author Sanjog Basnet
  */
-public class LogAnalyzer extends UnaryFunctionAnalyzer implements SemanticAnalyzerInterface {
+public class LogAnalyzer extends UnaryFunctionAnalyzer{
 
 
 	@Override

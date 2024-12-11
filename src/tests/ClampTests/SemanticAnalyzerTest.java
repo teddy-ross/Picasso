@@ -41,8 +41,10 @@ class SemanticAnalyzerTest {
 	void testParseLog() {
 
 		Stack<Token> tokens = new Stack<>();
+		
 		tokens.push(new IdentifierToken("x"));
 		tokens.push(new ClampToken());
+		
 
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 

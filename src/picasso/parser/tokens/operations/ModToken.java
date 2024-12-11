@@ -12,5 +12,8 @@ public class ModToken extends CharToken implements OperationInterface {
 	public ModToken() {
 		super(CharConstants.MOD);
 	}
-
+	@Override
+	public int getPrecedence() {
+		return MULTIPLY_OR_DIVIDE;
+	}
 }

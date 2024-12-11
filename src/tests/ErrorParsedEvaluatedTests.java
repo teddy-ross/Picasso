@@ -25,7 +25,7 @@ public class ErrorParsedEvaluatedTests {
 	}
 	
 	
-	/* UNCOMMENT WHEN MULTIPLICATION AND SUBTRACTION IMPLEMENTED
+
 	private ExpressionTreeGenerator parser;
 
 	@BeforeEach
@@ -88,5 +88,5 @@ public class ErrorParsedEvaluatedTests {
 			parser.makeExpression("floor(x");
 		});
 	}
-	*/
+	
 }

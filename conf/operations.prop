@@ -5,3 +5,5 @@
 %=Mod
 /=Divide
 =Equals
+^=Exponentiate
+!=Negate
