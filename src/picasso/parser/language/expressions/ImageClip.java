@@ -8,7 +8,8 @@ import picasso.parser.language.ExpressionTreeNode;
  * Combines an image (via `ImgNameString`) with two parameter expressions to
  * determine pixel coordinates.
  * 
- * @author
+ * @author Sanjog Basnet
+ * @author Nisha Walvekar
  */
 public class ImageClip extends ExpressionTreeNode {
 

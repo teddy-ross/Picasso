@@ -19,7 +19,7 @@ public class Negate extends UnaryFunction {
        
         RGBColor result = param.evaluate(x, y);
         
-     // Negate each RGB color by subtracting from 1 (invert the color)
+     // Negate each RGB color 
         double red =  -result.getRed();
         double green = -result.getGreen();
         double blue = -result.getBlue();
