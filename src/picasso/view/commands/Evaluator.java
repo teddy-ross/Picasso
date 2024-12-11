@@ -46,10 +46,15 @@ public class Evaluator implements Command<Pixmap> {
 
 			// Generate the expression tree
 			expr = createExpressionTree(expression);
-			
+
 		} catch (ParseException p) {
 			Error error = new Error("Invalid Expression: " + p.getMessage());
 			p.printStackTrace();
+			return;
+		}
+		catch (ClassCastException c) {
+			Error error = new Error("Invalid Expression: Unable to Read Input");
+			c.printStackTrace();
 			return;
 		}
 
@@ -64,7 +69,14 @@ public class Evaluator implements Command<Pixmap> {
 				double evalY = imageToDomainScale(imageY, size.height);
 				for (int imageX = 0; imageX < size.width; imageX++) {
 					double evalX = imageToDomainScale(imageX, size.width);
-					Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
+					Color pixelColor;
+					try {
+						pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
+					} catch (NullPointerException n) {
+						Error error = new Error("Invalid Expression: Unable to Read Input");
+						n.printStackTrace();
+						return;
+					}
 					target.setColor(imageX, imageY, pixelColor);
 				}
 

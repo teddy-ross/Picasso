@@ -5,10 +5,12 @@ package tests.AssignmentTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//import org.junit.jupiter.api.AfterEach;
+////import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+//import picasso.parser.language.ExpressionTreeNode;
+import picasso.parser.language.expressions.Cos;
 //import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.Cos;
 import picasso.parser.language.expressions.Equals;
@@ -55,6 +57,7 @@ class EvaluatorTests {
 	public void setUp() throws Exception {
 	}
 
+
 	@Test
 	public void testCosineEvaluation() {
 		Cos myTree = new Cos(new X());
@@ -81,4 +84,5 @@ class EvaluatorTests {
 	}
 
 }
+
 
