@@ -21,7 +21,7 @@ public class ExponentiateAnalyzer implements SemanticAnalyzerInterface {
 		tokens.pop(); // Remove the ^ token
 		ExpressionTreeNode leftETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode rightETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Exponentiate(leftETN, rightETN);
+		return new Exponentiate(rightETN, leftETN);
 
 	}
 }
