@@ -19,8 +19,9 @@ public class ImageClipAnalyzer implements SemanticAnalyzerInterface{
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); // Need to remove the imageClip token
-		ExpressionTreeNode parx = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode pary = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		ExpressionTreeNode parx = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		
 
 		StringToken token = (StringToken) tokens.pop();
 	
