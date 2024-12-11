@@ -11,11 +11,10 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Sanjog Basnet
  * @author Nisha Walvekar
  */
-public class ImageClip extends ExpressionTreeNode {
+public class ImageClip extends MultiArgumentFunction {
 
     private ImgNameString imgstr;
-    private ExpressionTreeNode parx;
-    private ExpressionTreeNode pary;
+
 
     /**
      * Constructs an ImageClip expression.
@@ -25,9 +24,9 @@ public class ImageClip extends ExpressionTreeNode {
      * @param pary   The expression for calculating the Y coordinate
      */
     public ImageClip(String imageName, ExpressionTreeNode parx, ExpressionTreeNode pary) {
-        imgstr = new ImgNameString(imageName);
-        this.parx = parx;
-        this.pary = pary;
+        super(parx,pary);
+    	imgstr = new ImgNameString(imageName);
+
     }
 
     @Override
@@ -40,34 +39,5 @@ public class ImageClip extends ExpressionTreeNode {
         return imgstr.evaluate(expressionX, expressionY);
     }
 
-    @Override
-    public String toString() {  //
-    	String classname = this.getClass().getName();
-    	return classname.substring(classname.lastIndexOf(".")) + "(" + parx + "," + pary + ")";
-    } 
-
-    @Override
-    public boolean equals(Object o) {
-    	if (o == this) {
-    		return true;
-    	}
-
-    	if (!(o instanceof ImageClip)) {
-    		return false;
-    	}
-
-    	// Make sure the objects are the same type
-
-    	if (o.getClass() != this.getClass()) {
-    		return false;
-    	}
-
-    	ImageClip ic = (ImageClip) o;
-
-    	// check if their parameters are equal
-    	if (!(this.pary.equals(ic.pary) && this.parx.equals(ic.parx))) {
-    		return false;
-    	}
-    	return true;
-    }
+ 
 }
