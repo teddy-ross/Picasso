@@ -36,13 +36,12 @@ class ExpressionTreeGeneratorTests {
      * Tests parsing and constructing tangent expressions.
      */
     @Test
-    public void tangentFunctionTests() {
+    public void ArctanFunctionTests() {
         // Test for simple arc tangent of x
         ExpressionTreeNode e = parser.makeExpression("atan(x)");
         assertEquals(new Atan(new X()), e);
 
-        // Test for arc tangent of a complex expression: tan(x + y)
-        e = parser.makeExpression("atan(y)");
+        e = parser.makeExpression("atan(x+y)");
         assertEquals(new Atan(new Addition(new X(), new Y())), e);
     }
 }
