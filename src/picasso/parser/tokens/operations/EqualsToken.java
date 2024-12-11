@@ -10,4 +10,10 @@ public class EqualsToken extends CharToken implements OperationInterface {
 	public EqualsToken() {
 		super(CharConstants.EQUAL);
 	}
+
+	@Override
+	public int getPrecedence() {
+		
+		return -1; //not sure if this should implement OperationInterface
+	}
 }

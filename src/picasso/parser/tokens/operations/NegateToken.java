@@ -13,4 +13,10 @@ public class NegateToken extends CharToken implements OperationInterface {
 		super(CharConstants.NEGATE);
 	}
 
+	@Override
+	public int getPrecedence() {
+		
+		return 5; //not really a binary operation either 
+	}
+
 }

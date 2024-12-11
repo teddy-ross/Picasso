@@ -12,5 +12,8 @@ public class DivideToken extends CharToken implements OperationInterface {
 	public DivideToken() {
 		super(CharConstants.DIVIDE);
 	}
-
+	@Override
+	public int getPrecedence() {
+		return MULTIPLY_OR_DIVIDE;
+	}
 }
