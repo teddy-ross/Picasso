@@ -20,7 +20,7 @@ public class Log extends UnaryFunction {
 		
 		double red = Math.log(Math.abs(result.getRed()));
 		double green = Math.log(Math.abs(result.getGreen()));
-		double blue = Math.log(Math.abs(result.getBlue()));
+		double blue = Math.log(Math.abs(result.getBlue())) ;
 		
 		
 		
