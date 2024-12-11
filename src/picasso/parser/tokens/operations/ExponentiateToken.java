@@ -13,4 +13,8 @@ public class ExponentiateToken extends CharToken implements OperationInterface {
 		super(CharConstants.EXPONENTIATE);
 	}
 
+	@Override
+	public int getPrecedence() {
+		return EXPONENTIATE;
+	}
 }
