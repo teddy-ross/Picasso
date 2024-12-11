@@ -19,14 +19,24 @@ public class PerlinColor extends ExpressionTreeNode {
     @Override
     public RGBColor evaluate(double x, double y) {
       
-        double expressionX = parx.evaluate(x, y).getRed();
-        double expressionY = pary.evaluate(x, y).getRed();
+    	RGBColor paramVal1 = parx.evaluate(x, y);
+        RGBColor paramVal2 = pary.evaluate(x, y);
         
-        double red = (ImprovedNoise.noise(expressionX, expressionY, 0) + 1) / 2;
-        double green = (ImprovedNoise.noise(expressionX, expressionY, 1) + 1) / 2;
-        double blue = (ImprovedNoise.noise(expressionX, expressionY, 2) + 1) / 2;
-    
-        return new RGBColor(red, green, blue);
+        double r_left = paramVal1.getRed();
+        double g_left = paramVal1.getGreen();
+        double b_left = paramVal1.getBlue();
+        
+        double r_right = paramVal2.getRed();
+        double g_right = paramVal2.getGreen();
+        double b_right = paramVal2.getBlue();
+        
+
+		double red = ImprovedNoise.noise(r_left + r_right, g_left+g_right, b_left + b_right);
+		double green = ImprovedNoise.noise(r_left+ r_right, g_right + g_left, b_left - b_right);
+		double blue = ImprovedNoise.noise(r_left+r_right, b_right, b_left * b_right);
+		
+        
+		return new RGBColor(red, green, blue);
    
     }
     @Override
