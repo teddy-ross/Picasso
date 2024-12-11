@@ -22,11 +22,11 @@ public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
-	@SuppressWarnings("unused")
-	private static final int GROUPING = 1; // parentheses
-	private static final int ADD_OR_SUBTRACT = 2;
-	private static final int MULTIPLY_OR_DIVIDE = 3;
-	private static final int EXPONENTIATE = 4;
+//	@SuppressWarnings("unused")
+//	private static final int GROUPING = 1; // parentheses
+//	private static final int ADD_OR_SUBTRACT = 2;
+//	private static final int MULTIPLY_OR_DIVIDE = 3;
+//	private static final int EXPONENTIATE = 4;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -95,14 +95,11 @@ public class ExpressionTreeGenerator {
 
 		while (iter.hasNext()) {
 			Token token = iter.next();
-			if (token instanceof NumberToken) {
+			if (token instanceof NumberToken 
+					|| token instanceof ColorToken 
+					|| token instanceof IdentifierToken 
+					|| token instanceof StringToken ) {
 				postfixResult.push(token);
-			} else if (token instanceof ColorToken) {
-				postfixResult.push(token);
-			} else if (token instanceof IdentifierToken) {
-				postfixResult.push(token);
-			}	else if (token instanceof StringToken) {
-					postfixResult.push(token);
 			} else if (token instanceof FunctionToken) {
 				operators.push(token);
 			} else if (token instanceof OperationInterface) {
@@ -165,9 +162,8 @@ public class ExpressionTreeGenerator {
 				}
 			} else if (token instanceof QuoteCharToken) {
 				// Until the token at the top of the stack is another
-				// quote, pop operators off the stack onto the output
+				// quote, pop off the stack onto the output
 				// queue.
-
 				while (!operators.isEmpty() && !(operators.peek() instanceof QuoteCharToken)) {
 					postfixResult.push(operators.pop());
 				}
@@ -209,30 +205,30 @@ public class ExpressionTreeGenerator {
 	 */
 	private int orderOfOperation(Token token) {
 
-		// TODO: Need to finish with other operators.
+	
 
-		// TODO: DISCUSS: Is it better to have a method in the OperatorToken
-		// class that gives the order of operation?
-
-		if (token instanceof PlusToken) {
-			return ADD_OR_SUBTRACT;
-		}
-		if (token instanceof MinusToken) {
-			return ADD_OR_SUBTRACT;
-		}
-		else if (token instanceof DivideToken) {
-			return MULTIPLY_OR_DIVIDE;
-		}
-		else if (token instanceof MultiplyToken) {
-			return MULTIPLY_OR_DIVIDE;
-		}
-		else if (token instanceof ExponentiateToken) {
-			return EXPONENTIATE;
-		}
-		else {
-			return CONSTANT;
-		}
+//		if (token instanceof PlusToken) {
+//			return ADD_OR_SUBTRACT;
+//		}
+//		if (token instanceof MinusToken) {
+//			return ADD_OR_SUBTRACT;
+//		}
+//		else if (token instanceof DivideToken) {
+//			return MULTIPLY_OR_DIVIDE;
+//		}
+//		else if (token instanceof MultiplyToken) {
+//			return MULTIPLY_OR_DIVIDE;
+//		}
+//		else if (token instanceof ExponentiateToken) {
+//			return EXPONENTIATE;
+//		}
+//		else {
+//			return CONSTANT;
+//		}
 		
-		
+		if (token instanceof OperationInterface) {
+			return ((OperationInterface) token).getPrecedence();
+		}
+		return CONSTANT;
 	}
 }

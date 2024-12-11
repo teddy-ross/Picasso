@@ -11,5 +11,9 @@ public class MultiplyToken extends CharToken implements OperationInterface {
 	public MultiplyToken() {
 		super(CharConstants.MULTIPLY);
 	}
+	@Override
+	public int getPrecedence() {
+		return MULTIPLY_OR_DIVIDE;
+	}
 
 }
