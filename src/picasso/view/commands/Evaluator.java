@@ -1,6 +1,9 @@
 package picasso.view.commands;
 
+import java.util.concurrent.TimeUnit;
+
 import java.awt.Color;
+
 import java.awt.Dimension;
 
 import picasso.model.Pixmap;
@@ -51,8 +54,7 @@ public class Evaluator implements Command<Pixmap> {
 			Error error = new Error("Invalid Expression: " + p.getMessage());
 			p.printStackTrace();
 			return;
-		}
-		catch (ClassCastException c) {
+		} catch (ClassCastException c) {
 			Error error = new Error("Invalid Expression: Unable to Read Input");
 			c.printStackTrace();
 			return;
@@ -78,6 +80,8 @@ public class Evaluator implements Command<Pixmap> {
 						return;
 					}
 					target.setColor(imageX, imageY, pixelColor);
+					
+					
 				}
 
 			}

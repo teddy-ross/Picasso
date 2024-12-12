@@ -168,17 +168,17 @@ public class Pixmap {
 			mySize = newSize;
 		}
 	}
-	
+
 	public void setExpression(String expression) {
 		this.expression = expression;
 	}
-	
+
 	/**
-     * Gets the current expression.
-     */
-    public String getExpression() {
-        return expression;
-    }
+	 * Gets the current expression.
+	 */
+	public String getExpression() {
+		return expression;
+	}
 
 	/**
 	 * Read the image named by fileName
@@ -213,12 +213,12 @@ public class Pixmap {
 		pen.drawImage(myImage, 0, 0, mySize.width, mySize.height, null);
 	}
 
-	private void createImage(int width, int height, Color color) {
+	private void createImage(int width, int height, Color color){
 		myFileName = DEFAULT_NAME;
 		myImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		mySize = new Dimension(width, height);
-		for( int i=0; i < width; i++ ) {
-			for(int j=0; j<width; j++ ) {
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < width; j++) {
 				setColor(i, j, color);
 			}
 		}
