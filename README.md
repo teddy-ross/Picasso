@@ -37,3 +37,4 @@ This code base originated as a project in a course at Duke University.  The prof
 
 ## Extensions
 1. User can use the Up and Down arrow keys to navigate through the expression that they have evlautated in the current session.
+2. User can animate a function by typing animate("function goes here")
