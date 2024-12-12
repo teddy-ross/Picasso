@@ -15,9 +15,6 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public class RandomExpression extends ExpressionTreeNode {
 	/**
-	 * Create a random expression that takes as a parameter ~ the desired size of the expression
-	 * To avoid errors, sometimes an additional function is added so the length might be greater than you intended
-	 * User inputed length is to make sure the expression isn't enormous
 	 * 
 	 * @param param the expression
 	 */
@@ -32,6 +29,7 @@ public class RandomExpression extends ExpressionTreeNode {
 		List<String> functions = Arrays.asList("RGBToYCrCb(", "yCrCbToRGB(","ceil(", "floor(","sin(","abs(","cos(","tan(","atan(","log(");
 		List<String> others = Arrays.asList("x","y","random()");
 		List<String> operators = Arrays.asList("+","-","*","/","%");
+	}
 		
 	@Override
 	public RGBColor evaluate(double x, double y) {

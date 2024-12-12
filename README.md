@@ -35,3 +35,5 @@ To run Picasso, run `picasso.Main`
 
 This code base originated as a project in a course at Duke University.  The professors realized that the code could be designed better and refactored.  This code base has some code leftover from the original version.
 
+## Extensions
+1. User can use the Up and Down arrow keys to navigate through the expression that they have evlautated in the current session.
