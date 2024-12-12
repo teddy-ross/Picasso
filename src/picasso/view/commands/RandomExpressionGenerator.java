@@ -7,7 +7,7 @@ public class RandomExpressionGenerator {
 	private static final String[] binops = {"+", "-", "/", "*", "%", "^"};
 	private static final String[] unaryFn = {"floor", "cos", "sin", "tan", "abs", "log", "exp", "ceil","clamp", "wrap", "atan", "yCrCbToRGB", "rgbToYCrCb"};
 	private static final String[] multiFn = {"perlinColor", "perlinBW"};
-	private static final int MAX_DEPTH = 5;
+	private static final int MAX_DEPTH = 7;
 
 
 
@@ -44,7 +44,8 @@ public class RandomExpressionGenerator {
 			return "(" + generateExpression("", depth + 1)  + ")"+binops[r.nextInt(binops.length)] + "(" + generateExpression("", depth + 1)  + ")";
 		}
 		else  {
-			return coords[r.nextInt(coords.length)] +binops[r.nextInt(binops.length)]  +generateExpression("", depth + 1) ;
+			return coords[r.nextInt(coords.length)]; 
+//					+binops[r.nextInt(binops.length)]  +generateExpression("", depth + 1) ;
 		}
 
 	}
