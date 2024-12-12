@@ -3,6 +3,7 @@ package picasso.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 
 import picasso.model.Pixmap;
@@ -44,6 +45,11 @@ public class ButtonPanel extends JPanel {
 			}
 		});
 		add(button);
+	}
+	public void add(String name, AbstractAction action) {
+	    JButton button = new JButton(name);
+	    button.addActionListener(action);
+	    this.add(button);
 	}
 
 	/**
