@@ -69,14 +69,14 @@ public class Canvas extends JPanel {
     }
     public void zoomOut() {
         scale *= 0.9; // Increase scale by -10%
-        refresh();    // Reapply size and trigger repaint
+        refresh();    // Reapply size and repaint
     }
 
     public void paintComponent(Graphics pen) {
         super.paintComponent(pen);
         Graphics2D g2 = (Graphics2D) pen;
-        g2.scale(scale, scale); // Apply scaling for zoom effect
-        myPixmap.paint(g2);     // Paint the pixmap with the scaled graphics context
+        g2.scale(scale, scale); //scale and paint so that we adjust for extension
+        myPixmap.paint(g2);     
     }
 
     public void setSize(Dimension size) {
