@@ -39,11 +39,28 @@ public class Frame extends JFrame {
         // add commands to test here
         ButtonPanel commands = new ButtonPanel(canvas);
         commands.add("Open", new Reader(this));
-
-        commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
+//        commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
+        commands.add("Evaluate", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String inputExpression = t.getText();
+                if (!inputExpression.isEmpty()) {
+                    expressionHistory.add(inputExpression);
+                    historyPointer += 1;
+                }
+                Pixmap pixmap = canvas.getPixmap();
+                new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);
+            }
+        });
+        
         t = new JTextField(25);
+//        JScrollPane scrollPane = new JScrollPane(t);
+//        scrollPane.setPreferredSize(new Dimension(150, 30)); 
+//        getContentPane().add(scrollPane, BorderLayout.SOUTH);
         commands.add(t);
         commands.add("Save", new Writer());
+
+
         
         // Detect the operating system for zoom in and zoom out (control versus command)
         boolean isMac = System.getProperty("os.name").toLowerCase().contains("mac");
@@ -62,7 +79,14 @@ public class Frame extends JFrame {
                 new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);
             }
         });
-        
+        RandomExpressionGenerator generator = new RandomExpressionGenerator();
+        commands.add("Random", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String randomExpression = generator.generateExpression("", 0);
+                t.setText(randomExpression);
+            }
+        });
         //our two extensions, zoom in and out, and arrow keys for history
         t.addKeyListener(new KeyAdapter() {
             @Override
@@ -95,6 +119,7 @@ public class Frame extends JFrame {
                     }
                 }
             }
+            
             //fixes some silly plus and minus bugs
             @Override
             public void keyTyped(KeyEvent e) {
