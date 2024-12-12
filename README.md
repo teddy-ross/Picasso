@@ -37,3 +37,4 @@ This code base originated as a project in a course at Duke University.  The prof
 
 ## Extensions
 1. User can use the Up and Down arrow keys to navigate through the expression that they have evlautated in the current session.
+2. Generate expressions randomly - User can press the random button, which will create and show a randomly generated expression in the textfield. You can then evaluate by pressing the button or focusing the text box and hitting enter.
