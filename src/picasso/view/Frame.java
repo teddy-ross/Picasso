@@ -2,14 +2,11 @@ package picasso.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
-import javax.swing.text.*;
 
 import picasso.model.Pixmap;
 import picasso.util.ThreadedCommand;
