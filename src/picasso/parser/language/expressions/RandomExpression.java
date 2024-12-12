@@ -29,6 +29,10 @@ public class RandomExpression extends ExpressionTreeNode {
 		List<String> functions = Arrays.asList("RGBToYCrCb(", "yCrCbToRGB(","ceil(", "floor(","sin(","abs(","cos(","tan(","atan(","log(");
 		List<String> others = Arrays.asList("x","y","random()");
 		List<String> operators = Arrays.asList("+","-","*","/","%");
+		 
+	    //private static final Random random = new Random();
+
+		}
 		
 	@Override
 	public RGBColor evaluate(double x, double y) {
