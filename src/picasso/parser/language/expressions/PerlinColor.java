@@ -8,13 +8,10 @@ import picasso.model.*;
  * 
  *@author Edward Ross
  */
-public class PerlinColor extends ExpressionTreeNode {
-    private final ExpressionTreeNode parx;
-    private final ExpressionTreeNode pary;
-    
-    public PerlinColor(ExpressionTreeNode parx, ExpressionTreeNode pary) {
-        this.parx = parx;
-        this.pary = pary;
+public class PerlinColor extends MultiArgumentFunction {
+   
+	public PerlinColor(ExpressionTreeNode parx, ExpressionTreeNode pary) {
+        super(parx,pary);
     }
     @Override
     public RGBColor evaluate(double x, double y) {
@@ -31,28 +28,5 @@ public class PerlinColor extends ExpressionTreeNode {
         return new RGBColor(red, green, blue);
    
     }
-    @Override
-    public String toString() {
-        String classname = this.getClass().getName();
-        return classname.substring(classname.lastIndexOf(".")) + "(" + parx + "," + pary + ")";
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true; 
-        }
-        if (!(o instanceof PerlinColor)) {
-            return false;
-        }
-        // Make sure the objects are the same type
-        if (o.getClass() != this.getClass()) {
-            return false;
-        }
-        PerlinColor pbw = (PerlinColor) o;
-        // Check if their parameters are equal
-        if (!(this.pary.equals(pbw.pary) && this.parx.equals(pbw.parx))) {
-            return false;
-        }
-        return true;
-    }
+
 }

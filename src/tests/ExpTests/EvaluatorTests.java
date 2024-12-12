@@ -28,7 +28,7 @@ class EvaluatorTests {
 	}
 
 	@Test
-	public void testSinEvaluation() {
+	public void testExpEvaluation() {
 		Exp myTree = new Exp(new X());
 
 		// some straightforward tests
@@ -46,7 +46,7 @@ class EvaluatorTests {
 
 		for (double testVal : tests) {
 
-			double expOfTestVal = Math.sin(testVal);
+			double expOfTestVal = Math.exp(testVal);
 
 			assertEquals(new RGBColor(expOfTestVal, expOfTestVal, expOfTestVal), myTree.evaluate(testVal, -1));
 			assertEquals(new RGBColor(expOfTestVal, expOfTestVal, expOfTestVal),

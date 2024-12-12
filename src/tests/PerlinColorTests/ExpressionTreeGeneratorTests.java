@@ -36,7 +36,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new PerlinColor(new X(), new Y()), e);
 
 		e = parser.makeExpression("perlinColor( x + y, x)");
-		assertEquals(new PerlinColor(new Addition(new Y(), new X()), new X()), e);
+		assertEquals(new PerlinColor(new Addition(new X(), new Y()), new X()), e);
 	}
 
 }
