@@ -19,6 +19,7 @@ import picasso.view.commands.*;
  *@author Sanjog Basnet
  *@author Edward Ross
  *@author Sarina Cusumano
+ *@author Sylvia Agatako 
  */
 @SuppressWarnings("serial")
 public class Frame extends JFrame {
@@ -28,18 +29,31 @@ public class Frame extends JFrame {
 
     private List<String> expressionHistory = new ArrayList<>();
     private int historyPointer = -1;
+    private JTabbedPane tabbedPane;// Create a tabbed pane for the canvas
 
     public Frame(Dimension size) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // create GUI components
-        Canvas canvas = new Canvas(this);
-        canvas.setSize(size);
+        // Initialize tabbed pane
+        tabbedPane = new JTabbedPane();
 
-        // add commands to test here
-        ButtonPanel commands = new ButtonPanel(canvas);
+        // Add the first canvas
+        addNewCanvas(size);
+
+        // Create the command panel
+        ButtonPanel commands = createCommandPanel(size);
+
+        // Add tabbed pane and commands panel to the frame
+        getContentPane().add(tabbedPane, BorderLayout.CENTER);
+        getContentPane().add(commands, BorderLayout.NORTH);
+
+        pack();
+    }
+
+    private ButtonPanel createCommandPanel(Dimension size) {
+        ButtonPanel commands = new ButtonPanel(getCurrentCanvas());
+
         commands.add("Open", new Reader(this));
-//        commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(this)));
         commands.add("Evaluate", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,24 +62,15 @@ public class Frame extends JFrame {
                     expressionHistory.add(inputExpression);
                     historyPointer += 1;
                 }
-                Pixmap pixmap = canvas.getPixmap();
-                new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);
+                Pixmap pixmap = getCurrentCanvas().getPixmap();
+                new ThreadedCommand<>(getCurrentCanvas(), new Evaluator(Frame.this)).execute(pixmap);
             }
         });
-        
+
         t = new JTextField(25);
-//        JScrollPane scrollPane = new JScrollPane(t);
-//        scrollPane.setPreferredSize(new Dimension(150, 30)); 
-//        getContentPane().add(scrollPane, BorderLayout.SOUTH);
         commands.add(t);
         commands.add("Save", new Writer());
 
-
-        
-        // Detect the operating system for zoom in and zoom out (control versus command)
-        boolean isMac = System.getProperty("os.name").toLowerCase().contains("mac");
-     
-        // enter functionality
         t.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String inputExpression = t.getText();
@@ -74,11 +79,12 @@ public class Frame extends JFrame {
                     expressionHistory.add(inputExpression);
                     historyPointer += 1;
                 }
-                Pixmap pixmap = canvas.getPixmap();
+                Pixmap pixmap = getCurrentCanvas().getPixmap();
 
-                new ThreadedCommand<>(canvas, new Evaluator(Frame.this)).execute(pixmap);
+                new ThreadedCommand<>(getCurrentCanvas(), new Evaluator(Frame.this)).execute(pixmap);
             }
         });
+
         RandomExpressionGenerator generator = new RandomExpressionGenerator();
         commands.add("Random", new AbstractAction() {
             @Override
@@ -87,17 +93,31 @@ public class Frame extends JFrame {
                 t.setText(randomExpression);
             }
         });
-        //our two extensions, zoom in and out, and arrow keys for history
-        t.addKeyListener(new KeyAdapter() {
+
+        t.addKeyListener(createKeyListener());
+        commands.add("New Tab", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNewCanvas(size);
+            }
+        });
+
+        return commands;
+    }
+
+    private KeyAdapter createKeyListener() {
+        boolean isMac = System.getProperty("os.name").toLowerCase().contains("mac");
+
+        return new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 boolean isModifierPressed = (isMac && e.isMetaDown()) || (!isMac && e.isControlDown());
 
                 if (isModifierPressed && e.getKeyCode() == KeyEvent.VK_EQUALS) {
-                    canvas.zoomIn(); // Zoom in
+                    getCurrentCanvas().zoomIn(); // Zoom in
                     e.consume();
                 } else if (isModifierPressed && e.getKeyCode() == KeyEvent.VK_MINUS) {
-                    canvas.zoomOut(); // Zoom out
+                    getCurrentCanvas().zoomOut(); // Zoom out
                     e.consume();
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                     // Navigate expression history
@@ -119,33 +139,31 @@ public class Frame extends JFrame {
                     }
                 }
             }
-            
-            //fixes some silly plus and minus bugs
+
             @Override
             public void keyTyped(KeyEvent e) {
                 boolean isModifierPressed = (isMac && e.isMetaDown()) || (!isMac && e.isControlDown());
 
-                // Block typing of '+' or '-' when the modifier key is pressed (for zoom shortcuts)
                 if (isModifierPressed && (e.getKeyChar() == '+' || e.getKeyChar() == '-')) {
                     e.consume();
                 }
             }
-        });
-
-        canvas.setFocusable(true); // Ensure the canvas can receive key events
-        canvas.requestFocusInWindow();
-
-        // add our container to Frame and show it
-        getContentPane().add(canvas, BorderLayout.CENTER);
-        getContentPane().add(commands, BorderLayout.NORTH);
-        pack();
+        };
     }
 
-    /**
-     *
-     * @param j JTextField
-     * @return
-     */
+    private void addNewCanvas(Dimension size) {
+        Canvas newCanvas = new Canvas(this);
+        newCanvas.setSize(size);
+        tabbedPane.addTab("Canvas " + (tabbedPane.getTabCount() + 1), newCanvas);
+        tabbedPane.setSelectedComponent(newCanvas);
+        newCanvas.setFocusable(true);
+        newCanvas.requestFocusInWindow();
+    }
+
+    private Canvas getCurrentCanvas() {
+        return (Canvas) tabbedPane.getSelectedComponent();
+    }
+
     public String getText() {
         return t.getText();
     }
@@ -154,3 +172,4 @@ public class Frame extends JFrame {
         return t;
     }
 }
+

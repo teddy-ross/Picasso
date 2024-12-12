@@ -40,3 +40,4 @@ This code base originated as a project in a course at Duke University.  The prof
 2. Generate expressions randomly - User can press the random button, which will create and show a randomly generated expression in the textfield. You can then evaluate by pressing the button or focusing the text box and hitting enter.
 3. User can use command/cntrl and +/- to zoom in and out of the image. User must click into text box.
 4. User can animate a function by typing animate(<expression>)
+5. User can view multiple images in various tabs. By clicking "New Tab" in the frame, they can create a new canvas and evaluate an expression to get an image. 
